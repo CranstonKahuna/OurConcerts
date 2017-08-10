@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		3487033D1F3BFBB6002BF779 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3487033C1F3BFBB6002BF779 /* AppDelegate.swift */; };
-		3487033F1F3BFBB6002BF779 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3487033E1F3BFBB6002BF779 /* ViewController.swift */; };
+		3487033F1F3BFBB6002BF779 /* AddConcertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3487033E1F3BFBB6002BF779 /* AddConcertVC.swift */; };
 		348703421F3BFBB6002BF779 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 348703401F3BFBB6002BF779 /* Main.storyboard */; };
 		348703451F3BFBB6002BF779 /* OurConcerts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 348703431F3BFBB6002BF779 /* OurConcerts.xcdatamodeld */; };
 		348703471F3BFBB6002BF779 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 348703461F3BFBB6002BF779 /* Assets.xcassets */; };
 		3487034A1F3BFBB6002BF779 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 348703481F3BFBB6002BF779 /* LaunchScreen.storyboard */; };
 		348703551F3BFBB6002BF779 /* OurConcertsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348703541F3BFBB6002BF779 /* OurConcertsTests.swift */; };
 		348703601F3BFBB6002BF779 /* OurConcertsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3487035F1F3BFBB6002BF779 /* OurConcertsUITests.swift */; };
+		348703701F3C6E65002BF779 /* ListConcertsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3487036F1F3C6E65002BF779 /* ListConcertsVC.swift */; };
+		348703731F3C7471002BF779 /* ListConcertsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348703721F3C7471002BF779 /* ListConcertsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +39,7 @@
 /* Begin PBXFileReference section */
 		348703391F3BFBB6002BF779 /* OurConcerts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OurConcerts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3487033C1F3BFBB6002BF779 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3487033E1F3BFBB6002BF779 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3487033E1F3BFBB6002BF779 /* AddConcertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddConcertVC.swift; sourceTree = "<group>"; };
 		348703411F3BFBB6002BF779 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		348703441F3BFBB6002BF779 /* OurConcerts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OurConcerts.xcdatamodel; sourceTree = "<group>"; };
 		348703461F3BFBB6002BF779 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		3487035B1F3BFBB6002BF779 /* OurConcertsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OurConcertsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3487035F1F3BFBB6002BF779 /* OurConcertsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurConcertsUITests.swift; sourceTree = "<group>"; };
 		348703611F3BFBB6002BF779 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3487036F1F3C6E65002BF779 /* ListConcertsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListConcertsVC.swift; sourceTree = "<group>"; };
+		348703721F3C7471002BF779 /* ListConcertsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListConcertsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +103,10 @@
 		3487033B1F3BFBB6002BF779 /* OurConcerts */ = {
 			isa = PBXGroup;
 			children = (
+				348703711F3C6ED5002BF779 /* Controller */,
+				3487036D1F3C6D6F002BF779 /* Model */,
+				3487036E1F3C6D86002BF779 /* View */,
 				3487033C1F3BFBB6002BF779 /* AppDelegate.swift */,
-				3487033E1F3BFBB6002BF779 /* ViewController.swift */,
 				348703401F3BFBB6002BF779 /* Main.storyboard */,
 				348703461F3BFBB6002BF779 /* Assets.xcassets */,
 				348703481F3BFBB6002BF779 /* LaunchScreen.storyboard */,
@@ -126,6 +132,30 @@
 				348703611F3BFBB6002BF779 /* Info.plist */,
 			);
 			path = OurConcertsUITests;
+			sourceTree = "<group>";
+		};
+		3487036D1F3C6D6F002BF779 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				348703721F3C7471002BF779 /* ListConcertsTableViewCell.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		3487036E1F3C6D86002BF779 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		348703711F3C6ED5002BF779 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3487033E1F3BFBB6002BF779 /* AddConcertVC.swift */,
+				3487036F1F3C6E65002BF779 /* ListConcertsVC.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,8 +295,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3487033F1F3BFBB6002BF779 /* ViewController.swift in Sources */,
+				3487033F1F3BFBB6002BF779 /* AddConcertVC.swift in Sources */,
+				348703701F3C6E65002BF779 /* ListConcertsVC.swift in Sources */,
 				348703451F3BFBB6002BF779 /* OurConcerts.xcdatamodeld in Sources */,
+				348703731F3C7471002BF779 /* ListConcertsTableViewCell.swift in Sources */,
 				3487033D1F3BFBB6002BF779 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
