@@ -48,5 +48,15 @@ class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelega
         n = n + 1
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        // Edit Button
+        let editAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Edit", handler: { (action, indexPath) -> Void in
+            print("Edit for row \(indexPath.row)")
+            
+        })
+        return [editAction]
+
+    }
 
 }
