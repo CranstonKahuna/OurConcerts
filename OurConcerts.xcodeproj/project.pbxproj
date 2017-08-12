@@ -137,7 +137,6 @@
 		3487036D1F3C6D6F002BF779 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				348703721F3C7471002BF779 /* ListConcertsTableViewCell.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -145,6 +144,7 @@
 		3487036E1F3C6D86002BF779 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				348703721F3C7471002BF779 /* ListConcertsTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";

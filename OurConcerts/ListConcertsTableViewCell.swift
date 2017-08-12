@@ -8,20 +8,21 @@
 
 import UIKit
 
+var n = 0
+
 class ListConcertsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var bandName: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+
+
+    func configureCell(concert: Concerts)  {
+        //update cell
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        dateLbl.text = dateFormatter.string(from: concert.date! as Date)
+        bandName.text = "band \(n)"
+        n = n + 1
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
