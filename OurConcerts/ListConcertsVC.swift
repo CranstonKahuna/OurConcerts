@@ -30,15 +30,20 @@ class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "ConcertEdit" {
+            if let indexPath = sender as? IndexPath {
+                let destinationController = segue.destination as! EditConcertVC
+                let concert = controller.object(at: indexPath as IndexPath)
+                destinationController.concert = concert
+            }
+        }
     }
-    */
     
     // MARK: TableView functions
     
@@ -77,6 +82,7 @@ class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelega
         // Edit Button
         let editAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Edit", handler: { (action, indexPath) -> Void in
             print("Edit for row \(indexPath.row)")
+            self.performSegue(withIdentifier: "ConcertEdit", sender: indexPath)
             
         })
         return [editAction]

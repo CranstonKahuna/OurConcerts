@@ -87,14 +87,99 @@
                             <constraint firstItem="a05-oG-Hks" firstAttribute="top" secondItem="Wdc-j5-fen" secondAttribute="bottom" id="uKW-iw-9UQ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="List" id="8Z3-kV-B1w"/>
+                    <navigationItem key="navigationItem" id="p9N-wr-Cha" userLabel="EditNavigation"/>
                     <connections>
                         <outlet property="tableView" destination="a05-oG-Hks" id="lGa-vr-j8I"/>
+                        <segue destination="pqY-lO-p88" kind="show" identifier="ConcertEdit" id="xRz-qV-OOR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pnY-or-FZk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="292.75362318840581" y="-443.47826086956525"/>
+            <point key="canvasLocation" x="1200" y="-443.47826086956525"/>
+        </scene>
+        <!--Edit ConcertVC-->
+        <scene sceneID="aqa-tM-F9S">
+            <objects>
+                <viewController id="pqY-lO-p88" customClass="EditConcertVC" customModule="OurConcerts" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VXB-sR-HSv"/>
+                        <viewControllerLayoutGuide type="bottom" id="dkN-Ps-MpO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MAm-mS-5Sy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="p5W-zZ-V3g" userLabel="Edit Stack View">
+                                <rect key="frame" x="47" y="74" width="320" height="613"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Band/Artist Name" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZU-kQ-2UB">
+                                        <rect key="frame" x="87" y="0.0" width="146.33333333333331" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="4f9-MN-rC1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Band/Artist Name (short name)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F6o-OC-arV">
+                                        <rect key="frame" x="0.0" y="82.333333333333343" width="320" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="FSz-Px-BEh"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hkt-BB-bNj">
+                                        <rect key="frame" x="141" y="187" width="38" height="22.333333333333314"/>
+                                        <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="okR-a6-mBe">
+                                        <rect key="frame" x="0.0" y="273.66666666666663" width="320" height="199.99999999999994"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="Otv-Vq-LHG"/>
+                                        </constraints>
+                                        <date key="date" timeIntervalSinceReferenceDate="524029713.80797702">
+                                            <!--2017-08-10 03:48:33 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y29-mK-6P6">
+                                        <rect key="frame" x="135" y="538" width="50" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="y29-mK-6P6" secondAttribute="height" multiplier="1:1.5" id="fUd-Ju-Vtp"/>
+                                            <constraint firstAttribute="width" constant="50" id="faM-Ia-xg0"/>
+                                        </constraints>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Save">
+                                                    <attributes>
+                                                        <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="22" name="TimesNewRomanPS-BoldMT"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="F6o-OC-arV" secondAttribute="trailing" id="Zbj-GY-D9m"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="dkN-Ps-MpO" firstAttribute="top" secondItem="p5W-zZ-V3g" secondAttribute="bottom" id="HeZ-EO-rt9"/>
+                            <constraint firstItem="p5W-zZ-V3g" firstAttribute="centerX" secondItem="MAm-mS-5Sy" secondAttribute="centerX" id="QHh-b7-HGZ"/>
+                            <constraint firstItem="p5W-zZ-V3g" firstAttribute="top" secondItem="VXB-sR-HSv" secondAttribute="bottom" constant="10" id="WRl-VU-vhP"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b8R-DE-CpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1948" y="-443"/>
         </scene>
         <!--Add-->
         <scene sceneID="zYx-3R-DGy">
@@ -180,9 +265,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Xkf-NX-CvE" firstAttribute="top" secondItem="lXH-GH-Pfg" secondAttribute="bottom" id="QYq-6I-bcD"/>
                             <constraint firstItem="lXH-GH-Pfg" firstAttribute="centerX" secondItem="dzd-k0-SfD" secondAttribute="centerX" id="Xbi-t6-hwf"/>
-                            <constraint firstItem="lXH-GH-Pfg" firstAttribute="top" secondItem="Bl5-5U-7mw" secondAttribute="bottom" id="dIv-Jj-uxG"/>
+                            <constraint firstItem="lXH-GH-Pfg" firstAttribute="top" secondItem="Bl5-5U-7mw" secondAttribute="bottom" id="cF3-fM-Ylf"/>
+                            <constraint firstItem="Xkf-NX-CvE" firstAttribute="top" secondItem="lXH-GH-Pfg" secondAttribute="bottom" id="hkN-nO-vvZ"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Add" id="jkG-Rt-coB"/>
@@ -202,12 +287,31 @@
                     </tabBar>
                     <connections>
                         <segue destination="P9m-oX-xBp" kind="relationship" relationship="viewControllers" id="hBd-oo-JAo"/>
-                        <segue destination="kdH-k3-Ey6" kind="relationship" relationship="viewControllers" id="Wm7-tB-hLX"/>
+                        <segue destination="ceV-br-NFq" kind="relationship" relationship="viewControllers" id="Wm7-tB-hLX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVU-Jh-aob" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-492" y="-846"/>
+        </scene>
+        <!--Our Concerts-->
+        <scene sceneID="H2u-Ue-6vx">
+            <objects>
+                <navigationController title="Our Concerts" automaticallyAdjustsScrollViewInsets="NO" id="ceV-br-NFq" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="List" id="8Z3-kV-B1w"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sJn-hO-Hnf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kdH-k3-Ey6" kind="relationship" relationship="rootViewController" id="EVy-Kd-129"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sOz-iK-Zc6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="292.75362318840581" y="-443.47826086956525"/>
         </scene>
     </scenes>
 </document>
