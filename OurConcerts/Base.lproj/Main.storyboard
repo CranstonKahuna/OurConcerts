@@ -176,6 +176,10 @@
                             <constraint firstItem="p5W-zZ-V3g" firstAttribute="top" secondItem="VXB-sR-HSv" secondAttribute="bottom" constant="10" id="WRl-VU-vhP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="datePicker" destination="okR-a6-mBe" id="lmC-aT-LUX"/>
+                        <outlet property="nameLbl" destination="F6o-OC-arV" id="pJW-Ux-Xzt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8R-DE-CpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

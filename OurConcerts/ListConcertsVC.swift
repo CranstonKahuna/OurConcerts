@@ -155,7 +155,7 @@ class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelega
         
         someDateTime = formatter.date(from: "2017/12/31 22:00")
         let concert3 = Concerts(context: context)
-        concert3.date = someDateTime as! NSDate
+        concert3.date = someDateTime! as NSDate
     }
 
 }

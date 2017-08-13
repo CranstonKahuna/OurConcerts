@@ -11,11 +11,17 @@ import UIKit
 class EditConcertVC: UIViewController {
     
 
-    var concert = Concerts()
+    @IBOutlet weak var nameLbl: UITextField!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
+    var concert: Concerts? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("EditConcert \(concert)")
+        if concert != nil  {
+            print("EditConcert \(concert!)")
+            datePicker.date = concert!.date! as Date
+        }
 
         // Do any additional setup after loading the view.
     }
