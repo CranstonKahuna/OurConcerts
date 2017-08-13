@@ -21,7 +21,14 @@ class EditConcertVC: UIViewController {
         if concert != nil  {
             print("EditConcert \(concert!)")
             datePicker.date = concert!.date! as Date
+            let shortName = concert?.toBandShortName?.bandShortName
+            if shortName == nil {
+                nameLbl.text = "Unknown"
+            } else {
+                nameLbl.text = concert?.toBandShortName?.bandShortName
+            }
         }
+        
 
         // Do any additional setup after loading the view.
         
