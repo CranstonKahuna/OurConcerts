@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -18,7 +18,7 @@ class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        generateTestData()
+//        generateTestData()
         attemptFetch()
 
         // Do any additional setup after loading the view.
@@ -56,7 +56,7 @@ class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if let sections = controller.sections {
+        if let sections = controller?.sections {
             return sections.count
         }
         return 0
@@ -97,6 +97,7 @@ class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelega
         fetchRequest.sortDescriptors = [dateSort]
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         self.controller = controller
+        controller.delegate = self
         do {
             try controller.performFetch()
         } catch {
@@ -156,6 +157,7 @@ class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelega
         someDateTime = formatter.date(from: "2017/12/31 22:00")
         let concert3 = Concerts(context: context)
         concert3.date = someDateTime! as NSDate
+        ad.saveContext()
     }
 
 }

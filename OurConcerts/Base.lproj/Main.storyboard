@@ -31,7 +31,7 @@
                                         <rect key="frame" x="0.0" y="28" width="374" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QxQ-p8-Gic" id="P04-Oi-Az6">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="79.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Band Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Wg-6m-oQF">
@@ -154,6 +154,9 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <connections>
+                                            <action selector="saveBtnPressed:" destination="pqY-lO-p88" eventType="touchUpInside" id="vOW-cP-AEM"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -253,6 +256,9 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <connections>
+                                            <action selector="saveBtnPressed:" destination="P9m-oX-xBp" eventType="touchUpInside" id="Qlf-cn-hZK"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -269,6 +275,10 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Add" id="jkG-Rt-coB"/>
+                    <connections>
+                        <outlet property="bandShortNameLbl" destination="GYM-4k-2oO" id="x8F-g8-i6I"/>
+                        <outlet property="datePicker" destination="765-ia-was" id="paB-9Y-7gJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8k6-99-bae" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

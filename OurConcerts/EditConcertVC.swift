@@ -35,15 +35,22 @@ class EditConcertVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+/*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        print("Edit exiting segue \(segue)")
     }
+ */
 
+    @IBAction func saveBtnPressed(_ sender: Any) {
+        
+        concert!.date = datePicker.date as NSDate
+        ad.saveContext()
+        navigationController?.popViewController(animated: true)
+
+    }
 
 }
