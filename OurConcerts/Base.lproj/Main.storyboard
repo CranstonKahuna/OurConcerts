@@ -23,17 +23,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our Concerts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wdc-j5-fen">
-                                <rect key="frame" x="108" y="0.0" width="198.66666666666669" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="JJN-nw-V3Q"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="34"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a05-oG-Hks">
-                                <rect key="frame" x="20" y="60" width="374" height="627"/>
+                                <rect key="frame" x="20" y="0.0" width="374" height="687"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConcertCell" rowHeight="80" id="QxQ-p8-Gic" customClass="ListConcertsTableViewCell" customModule="OurConcerts" customModuleProvider="target">
@@ -79,15 +70,14 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Wdc-j5-fen" firstAttribute="centerX" secondItem="g2b-oZ-mAu" secondAttribute="centerX" id="FLt-wt-Kuc"/>
-                            <constraint firstItem="Wdc-j5-fen" firstAttribute="top" secondItem="g2b-oZ-mAu" secondAttribute="topMargin" id="OvN-Gn-n1H"/>
+                            <constraint firstItem="a05-oG-Hks" firstAttribute="top" secondItem="g2b-oZ-mAu" secondAttribute="topMargin" id="H9R-vO-QAK"/>
                             <constraint firstItem="a05-oG-Hks" firstAttribute="leading" secondItem="g2b-oZ-mAu" secondAttribute="leadingMargin" id="Q2h-zE-lPV"/>
+                            <constraint firstItem="rUu-aS-Ja5" firstAttribute="top" secondItem="a05-oG-Hks" secondAttribute="bottom" id="QCK-Pa-6St"/>
                             <constraint firstItem="rUu-aS-Ja5" firstAttribute="top" secondItem="a05-oG-Hks" secondAttribute="bottom" id="U8P-No-Meh"/>
                             <constraint firstItem="a05-oG-Hks" firstAttribute="trailing" secondItem="g2b-oZ-mAu" secondAttribute="trailingMargin" id="dA0-j9-rQq"/>
-                            <constraint firstItem="a05-oG-Hks" firstAttribute="top" secondItem="Wdc-j5-fen" secondAttribute="bottom" id="uKW-iw-9UQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="p9N-wr-Cha" userLabel="EditNavigation"/>
+                    <navigationItem key="navigationItem" title="Our Concerts" id="p9N-wr-Cha" userLabel="EditNavigation"/>
                     <connections>
                         <outlet property="tableView" destination="a05-oG-Hks" id="lGa-vr-j8I"/>
                         <segue destination="pqY-lO-p88" kind="show" identifier="ConcertEdit" id="xRz-qV-OOR"/>
@@ -304,9 +294,13 @@
                 <navigationController title="Our Concerts" automaticallyAdjustsScrollViewInsets="NO" id="ceV-br-NFq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="List" id="8Z3-kV-B1w"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sJn-hO-Hnf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sJn-hO-Hnf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
