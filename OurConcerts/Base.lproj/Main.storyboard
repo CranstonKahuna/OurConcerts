@@ -20,18 +20,18 @@
                         <viewControllerLayoutGuide type="bottom" id="rUu-aS-Ja5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="g2b-oZ-mAu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a05-oG-Hks">
-                                <rect key="frame" x="20" y="0.0" width="374" height="687"/>
+                                <rect key="frame" x="20" y="0.0" width="374" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConcertCell" rowHeight="80" id="QxQ-p8-Gic" customClass="ListConcertsTableViewCell" customModule="OurConcerts" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QxQ-p8-Gic" id="P04-Oi-Az6">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="79.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Band Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Wg-6m-oQF">
@@ -77,7 +77,9 @@
                             <constraint firstItem="a05-oG-Hks" firstAttribute="trailing" secondItem="g2b-oZ-mAu" secondAttribute="trailingMargin" id="dA0-j9-rQq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Our Concerts" id="p9N-wr-Cha" userLabel="EditNavigation"/>
+                    <navigationItem key="navigationItem" title="List My Concerts" id="p9N-wr-Cha" userLabel="EditNavigation">
+                        <barButtonItem key="backBarButtonItem" title=" " id="f5Q-55-wd0"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="a05-oG-Hks" id="lGa-vr-j8I"/>
                         <segue destination="pqY-lO-p88" kind="show" identifier="ConcertEdit" id="xRz-qV-OOR"/>
@@ -87,20 +89,20 @@
             </objects>
             <point key="canvasLocation" x="1200" y="-443.47826086956525"/>
         </scene>
-        <!--Edit ConcertVC-->
+        <!--Edit My Concert-->
         <scene sceneID="aqa-tM-F9S">
             <objects>
-                <viewController id="pqY-lO-p88" customClass="EditConcertVC" customModule="OurConcerts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Edit My Concert" id="pqY-lO-p88" customClass="EditConcertVC" customModule="OurConcerts" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VXB-sR-HSv"/>
                         <viewControllerLayoutGuide type="bottom" id="dkN-Ps-MpO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MAm-mS-5Sy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="p5W-zZ-V3g" userLabel="Edit Stack View">
-                                <rect key="frame" x="47" y="74" width="320" height="613"/>
+                                <rect key="frame" x="47" y="10" width="320" height="618"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Band/Artist Name" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZU-kQ-2UB">
                                         <rect key="frame" x="87" y="0.0" width="146.33333333333331" height="18"/>
@@ -112,7 +114,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Band/Artist Name (short name)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F6o-OC-arV">
-                                        <rect key="frame" x="0.0" y="82.333333333333343" width="320" height="40"/>
+                                        <rect key="frame" x="0.0" y="83.666666666666657" width="320" height="39.999999999999986"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="FSz-Px-BEh"/>
                                         </constraints>
@@ -121,13 +123,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hkt-BB-bNj">
-                                        <rect key="frame" x="141" y="187" width="38" height="22.333333333333314"/>
+                                        <rect key="frame" x="141" y="189.33333333333334" width="38" height="22.333333333333314"/>
                                         <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="okR-a6-mBe">
-                                        <rect key="frame" x="0.0" y="273.66666666666663" width="320" height="199.99999999999994"/>
+                                        <rect key="frame" x="0.0" y="277.33333333333331" width="320" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="Otv-Vq-LHG"/>
                                         </constraints>
@@ -136,7 +138,7 @@
                                         </date>
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y29-mK-6P6">
-                                        <rect key="frame" x="135" y="538" width="50" height="75"/>
+                                        <rect key="frame" x="135" y="543" width="50" height="75"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="y29-mK-6P6" secondAttribute="height" multiplier="1:1.5" id="fUd-Ju-Vtp"/>
                                             <constraint firstAttribute="width" constant="50" id="faM-Ia-xg0"/>
@@ -166,6 +168,8 @@
                             <constraint firstItem="p5W-zZ-V3g" firstAttribute="top" secondItem="VXB-sR-HSv" secondAttribute="bottom" constant="10" id="WRl-VU-vhP"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="datePicker" destination="okR-a6-mBe" id="lmC-aT-LUX"/>
                         <outlet property="nameLbl" destination="F6o-OC-arV" id="pJW-Ux-Xzt"/>
@@ -173,7 +177,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8R-DE-CpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1948" y="-443"/>
+            <point key="canvasLocation" x="1947.826086956522" y="-443.47826086956525"/>
         </scene>
         <!--Add-->
         <scene sceneID="zYx-3R-DGy">
@@ -270,10 +274,10 @@
             </objects>
             <point key="canvasLocation" x="293.60000000000002" y="-1098.8005997001501"/>
         </scene>
-        <!--Our Concerts-->
+        <!--Tab Bar Controller-->
         <scene sceneID="sX8-2s-QK8">
             <objects>
-                <tabBarController title="Our Concerts" id="SWh-bJ-035" sceneMemberID="viewController">
+                <tabBarController title="Tab Bar Controller" id="SWh-bJ-035" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="WGS-N0-7hQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -294,9 +298,10 @@
                 <navigationController title="Our Concerts" automaticallyAdjustsScrollViewInsets="NO" id="ceV-br-NFq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="List" id="8Z3-kV-B1w"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sJn-hO-Hnf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="sJn-hO-Hnf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
