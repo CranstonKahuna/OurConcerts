@@ -93,7 +93,7 @@ class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func attemptFetch() {
         let fetchRequest: NSFetchRequest<Concerts> = Concerts.fetchRequest()
-        let dateSort = NSSortDescriptor(key: "created", ascending: false)
+        let dateSort = NSSortDescriptor(key: "date", ascending: true)
         fetchRequest.sortDescriptors = [dateSort]
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         self.controller = controller
@@ -146,6 +146,9 @@ class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelega
     func generateTestData() {
         let concert = Concerts(context: context)
         concert.date = NSDate()
+        let bsn = BandShortName(context: context)
+        bsn.bandShortName = "sci"
+        concert.toBandShortName = bsn
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
@@ -153,10 +156,12 @@ class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let concert2 = Concerts(context: context)
         concert2.date = someDateTime! as NSDate
+        concert2.toBandShortName = bsn
         
         someDateTime = formatter.date(from: "2017/12/31 22:00")
         let concert3 = Concerts(context: context)
         concert3.date = someDateTime! as NSDate
+        concert3.toBandShortName = bsn
         ad.saveContext()
     }
 

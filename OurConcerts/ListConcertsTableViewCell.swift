@@ -22,7 +22,6 @@ class ListConcertsTableViewCell: UITableViewCell {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         dateLbl.text = dateFormatter.string(from: concert.date! as Date)
-        bandName.text = "band \(n)"
-        n = n + 1
+        bandName.text = concert.toBandShortName?.bandShortName
     }
 }

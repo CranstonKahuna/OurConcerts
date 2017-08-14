@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AddConcertVC: UIViewController {
 
@@ -21,13 +22,42 @@ class AddConcertVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    @IBAction func saveBtnPressed(_ sender: Any) {
-        let concert = Concerts(context: context)
-        concert.date = datePicker.date as NSDate
-        ad.saveContext()
-        
+    
+    func fetchBSN(sn: String) throws -> BandShortName {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "BandShortName")
+        fetchRequest.predicate = NSPredicate(format: "bandShortName == %@", sn)
+        let rbsn:BandShortName
+        do {
+            let fetchedBSN = try context.fetch(fetchRequest as! NSFetchRequest<NSFetchRequestResult>) as! [BandShortName]
+            if fetchedBSN.count > 0 {
+                rbsn = fetchedBSN[0]
+                
+            } else {
+                let bsn = BandShortName(context: context)
+                bsn.bandShortName = sn
+                rbsn = bsn
+                ad.saveContext()
+            }
+        } catch {
+            throw(error)
+        }
+        return rbsn
     }
 
+    @IBAction func saveBtnPressed(_ sender: Any) {
+        
+        if let bandShortName = bandShortNameLbl.text?.trimmingCharacters(in: .whitespacesAndNewlines) {
+            do {
+                let bsn = try fetchBSN(sn: bandShortName)
+                let concert = Concerts(context: context)
+                concert.date = datePicker.date as NSDate
+                concert.toBandShortName = bsn
+                ad.saveContext()
+            } catch {
+                fatalError("Failed to fetch bandShortName: \(error)")
+            }
+        }
+        
+    }
 }
 
