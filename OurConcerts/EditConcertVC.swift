@@ -64,4 +64,11 @@ class EditConcertVC: UIViewController {
         navigationController?.popViewController(animated: true)
         }
     }
+    @IBAction func deleteBtnPressed(_ sender: Any) {
+        if concert != nil {
+            context.delete(concert!)
+            ad.saveContext()
+        }
+        navigationController?.popViewController(animated: true)
+    }
 }

@@ -101,8 +101,22 @@
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ryG-Jc-VHv">
+                                <rect key="frame" x="334" y="8" width="60" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.34509803919999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="CGl-GE-LFs"/>
+                                    <constraint firstAttribute="width" constant="60" id="wXE-t9-DZv"/>
+                                </constraints>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteBtnPressed:" destination="pqY-lO-p88" eventType="touchUpInside" id="H7f-dV-3BW"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="p5W-zZ-V3g" userLabel="Edit Stack View">
-                                <rect key="frame" x="47" y="10" width="320" height="618"/>
+                                <rect key="frame" x="47" y="68" width="320" height="560"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Band/Artist Name" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZU-kQ-2UB">
                                         <rect key="frame" x="87" y="0.0" width="146.33333333333331" height="18"/>
@@ -114,7 +128,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Band/Artist Name (short name)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F6o-OC-arV">
-                                        <rect key="frame" x="0.0" y="83.666666666666657" width="320" height="39.999999999999986"/>
+                                        <rect key="frame" x="0.0" y="69.333333333333343" width="320" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="FSz-Px-BEh"/>
                                         </constraints>
@@ -123,13 +137,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hkt-BB-bNj">
-                                        <rect key="frame" x="141" y="189.33333333333334" width="38" height="22.333333333333314"/>
+                                        <rect key="frame" x="141" y="160.33333333333334" width="38" height="22.333333333333314"/>
                                         <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="okR-a6-mBe">
-                                        <rect key="frame" x="0.0" y="277.33333333333331" width="320" height="200"/>
+                                        <rect key="frame" x="0.0" y="234" width="320" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="Otv-Vq-LHG"/>
                                         </constraints>
@@ -138,7 +152,7 @@
                                         </date>
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y29-mK-6P6">
-                                        <rect key="frame" x="135" y="543" width="50" height="75"/>
+                                        <rect key="frame" x="135" y="485" width="50" height="75"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="y29-mK-6P6" secondAttribute="height" multiplier="1:1.5" id="fUd-Ju-Vtp"/>
                                             <constraint firstAttribute="width" constant="50" id="faM-Ia-xg0"/>
@@ -166,9 +180,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="ryG-Jc-VHv" firstAttribute="trailing" secondItem="MAm-mS-5Sy" secondAttribute="trailingMargin" id="2up-TA-JmL"/>
                             <constraint firstItem="dkN-Ps-MpO" firstAttribute="top" secondItem="p5W-zZ-V3g" secondAttribute="bottom" id="HeZ-EO-rt9"/>
                             <constraint firstItem="p5W-zZ-V3g" firstAttribute="centerX" secondItem="MAm-mS-5Sy" secondAttribute="centerX" id="QHh-b7-HGZ"/>
-                            <constraint firstItem="p5W-zZ-V3g" firstAttribute="top" secondItem="VXB-sR-HSv" secondAttribute="bottom" constant="10" id="WRl-VU-vhP"/>
+                            <constraint firstItem="p5W-zZ-V3g" firstAttribute="top" secondItem="ryG-Jc-VHv" secondAttribute="bottom" constant="20" id="UP0-BV-kEs"/>
+                            <constraint firstItem="ryG-Jc-VHv" firstAttribute="top" secondItem="VXB-sR-HSv" secondAttribute="bottom" constant="8" id="may-mr-npA"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
