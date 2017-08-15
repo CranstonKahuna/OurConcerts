@@ -9,7 +9,6 @@
 import UIKit
 
 class EditConcertVC: UIViewController {
-    
 
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var bandShortNameLbl: UITextField!
@@ -19,7 +18,6 @@ class EditConcertVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if concert != nil  {
-            print("EditConcert \(concert!)")
             datePicker.date = concert!.date! as Date
             let shortName = concert?.toBandShortName?.bandShortName
             if shortName == nil {
@@ -60,6 +58,7 @@ class EditConcertVC: UIViewController {
                 concert!.toBandShortName = bsn
                 ad.saveContext()
             } catch {
+                let error = error as NSError
                 fatalError("Failed to fetch bandShortName from edit: \(error)")
             }
         navigationController?.popViewController(animated: true)

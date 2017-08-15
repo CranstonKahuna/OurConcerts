@@ -81,7 +81,6 @@ class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         // Edit Button
         let editAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Edit", handler: { (action, indexPath) -> Void in
-            print("Edit for row \(indexPath.row)")
             self.performSegue(withIdentifier: "ConcertEdit", sender: indexPath)
             
         })

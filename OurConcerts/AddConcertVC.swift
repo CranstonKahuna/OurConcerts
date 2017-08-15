@@ -33,6 +33,7 @@ class AddConcertVC: UIViewController {
                 concert.toBandShortName = bsn
                 ad.saveContext()
             } catch {
+                let error = error as NSError
                 fatalError("Failed to fetch bandShortName from add: \(error)")
             }
         }
