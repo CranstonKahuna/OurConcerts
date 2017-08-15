@@ -11,8 +11,8 @@ import UIKit
 class EditConcertVC: UIViewController {
     
 
-    @IBOutlet weak var nameLbl: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var bandShortNameLbl: UITextField!
     
     var concert: Concerts? = nil
 
@@ -23,9 +23,9 @@ class EditConcertVC: UIViewController {
             datePicker.date = concert!.date! as Date
             let shortName = concert?.toBandShortName?.bandShortName
             if shortName == nil {
-                nameLbl.text = "Unknown"
+                bandShortNameLbl.text = "Unknown"
             } else {
-                nameLbl.text = concert?.toBandShortName?.bandShortName
+                bandShortNameLbl.text = concert?.toBandShortName?.bandShortName
             }
         }
         
@@ -53,11 +53,16 @@ class EditConcertVC: UIViewController {
  */
 
     @IBAction func saveBtnPressed(_ sender: Any) {
-        
-        concert!.date = datePicker.date as NSDate
-        ad.saveContext()
+        if let bandShortName = bandShortNameLbl.text?.trimmingCharacters(in: .whitespacesAndNewlines) {
+            do {
+                let bsn = try fetchBSN(sn: bandShortName)
+                concert!.date = datePicker.date as NSDate
+                concert!.toBandShortName = bsn
+                ad.saveContext()
+            } catch {
+                fatalError("Failed to fetch bandShortName from edit: \(error)")
+            }
         navigationController?.popViewController(animated: true)
-
+        }
     }
-
 }

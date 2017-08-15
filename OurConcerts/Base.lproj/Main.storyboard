@@ -174,8 +174,8 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="bandShortNameLbl" destination="F6o-OC-arV" id="Iwb-lB-vIt"/>
                         <outlet property="datePicker" destination="okR-a6-mBe" id="lmC-aT-LUX"/>
-                        <outlet property="nameLbl" destination="F6o-OC-arV" id="pJW-Ux-Xzt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8R-DE-CpG" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -22,27 +22,6 @@ class AddConcertVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func fetchBSN(sn: String) throws -> BandShortName {
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "BandShortName")
-        fetchRequest.predicate = NSPredicate(format: "bandShortName == %@", sn)
-        let rbsn:BandShortName
-        do {
-            let fetchedBSN = try context.fetch(fetchRequest as! NSFetchRequest<NSFetchRequestResult>) as! [BandShortName]
-            if fetchedBSN.count > 0 {
-                rbsn = fetchedBSN[0]
-                
-            } else {
-                let bsn = BandShortName(context: context)
-                bsn.bandShortName = sn
-                rbsn = bsn
-                ad.saveContext()
-            }
-        } catch {
-            throw(error)
-        }
-        return rbsn
-    }
 
     @IBAction func saveBtnPressed(_ sender: Any) {
         
@@ -54,7 +33,7 @@ class AddConcertVC: UIViewController {
                 concert.toBandShortName = bsn
                 ad.saveContext()
             } catch {
-                fatalError("Failed to fetch bandShortName: \(error)")
+                fatalError("Failed to fetch bandShortName from add: \(error)")
             }
         }
         
