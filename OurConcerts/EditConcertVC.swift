@@ -13,7 +13,7 @@ class EditConcertVC: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var bandShortNameLbl: UITextField!
     
-    var concert: Concerts? = nil
+    var concert: Concerts?
 
     override func viewDidLoad() {
         super.viewDidLoad()

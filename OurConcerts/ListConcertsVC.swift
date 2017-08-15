@@ -37,10 +37,10 @@ class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelega
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "ConcertEdit" {
-            if let indexPath = sender as? IndexPath {
-                let destinationController = segue.destination as! EditConcertVC
-                let concert = controller.object(at: indexPath as IndexPath)
-                destinationController.concert = concert
+            if let destinationController = segue.destination as? EditConcertVC {
+                if let concert = sender as? Concerts {
+                    destinationController.concert = concert
+                }
             }
         }
     }
@@ -81,8 +81,10 @@ class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         // Edit Button
         let editAction = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Edit", handler: { (action, indexPath) -> Void in
-            self.performSegue(withIdentifier: "ConcertEdit", sender: indexPath)
-            
+            if let objs = self.controller.fetchedObjects , objs.count > 0 {
+                let concert = objs[indexPath.row]
+                self.performSegue(withIdentifier: "ConcertEdit", sender: concert)
+            }
         })
         return [editAction]
     }
