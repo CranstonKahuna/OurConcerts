@@ -9,13 +9,14 @@
 import UIKit
 import CoreData
 
-class AddConcertVC: UIViewController {
+class AddConcertVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var bandShortNameLbl: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        bandShortNameLbl.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,6 +39,13 @@ class AddConcertVC: UIViewController {
             }
         }
         
+    }
+    
+    // MARK: UITextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
 }
 

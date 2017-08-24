@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditConcertVC: UIViewController {
+class EditConcertVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var bandShortNameLbl: UITextField!
@@ -17,6 +17,8 @@ class EditConcertVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        bandShortNameLbl.delegate = self
+
         if concert != nil  {
             datePicker.date = concert!.date! as Date
             let shortName = concert?.toBandShortName?.bandShortName
@@ -70,5 +72,12 @@ class EditConcertVC: UIViewController {
             ad.saveContext()
         }
         navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: UITextFieldDelegate
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
 }
