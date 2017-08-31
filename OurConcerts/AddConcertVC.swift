@@ -17,6 +17,7 @@ class AddConcertVC: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         bandShortNameLbl.delegate = self
+        datePicker.setValue(UIColor.white, forKey: "textColor")
     }
 
     override func didReceiveMemoryWarning() {

@@ -18,6 +18,8 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         bandShortNameLbl.delegate = self
+        datePicker.setValue(UIColor.white, forKey: "textColor")
+
 
         if concert != nil  {
             datePicker.date = concert!.date! as Date
