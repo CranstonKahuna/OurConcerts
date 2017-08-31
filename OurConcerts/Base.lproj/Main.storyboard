@@ -198,6 +198,25 @@
             </objects>
             <point key="canvasLocation" x="1947.826086956522" y="-443.47826086956525"/>
         </scene>
+        <!--Tools-->
+        <scene sceneID="GRR-UM-gN6">
+            <objects>
+                <viewController id="dkY-vz-uXu" customClass="ToolsVC" customModule="OurConcerts" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fV0-AU-cvP"/>
+                        <viewControllerLayoutGuide type="bottom" id="g2T-Cf-8d2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Zcb-bX-tIw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Tools" id="IJU-q2-aFo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TGR-Rd-VfI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="293" y="-1774"/>
+        </scene>
         <!--Add-->
         <scene sceneID="zYx-3R-DGy">
             <objects>
@@ -312,6 +331,7 @@
                     <connections>
                         <segue destination="P9m-oX-xBp" kind="relationship" relationship="viewControllers" id="hBd-oo-JAo"/>
                         <segue destination="ceV-br-NFq" kind="relationship" relationship="viewControllers" id="Wm7-tB-hLX"/>
+                        <segue destination="dkY-vz-uXu" kind="relationship" relationship="viewControllers" id="CzD-vQ-1bh"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVU-Jh-aob" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -322,7 +342,7 @@
         <scene sceneID="H2u-Ue-6vx">
             <objects>
                 <navigationController title="Our Concerts" automaticallyAdjustsScrollViewInsets="NO" id="ceV-br-NFq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="List" id="8Z3-kV-B1w"/>
+                    <tabBarItem key="tabBarItem" title="List Concerts" id="8Z3-kV-B1w"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="sJn-hO-Hnf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
