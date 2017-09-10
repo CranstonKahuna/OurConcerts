@@ -209,7 +209,63 @@
                     <view key="view" contentMode="scaleToFill" id="Zcb-bX-tIw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="75" translatesAutoresizingMaskIntoConstraints="NO" id="6z3-d9-sw9">
+                                <rect key="frame" x="86" y="170" width="242" height="240"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="bEh-hC-8Ck">
+                                        <rect key="frame" x="0.0" y="0.0" width="242" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfx-NR-Vvu">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                                <state key="normal" title="Create File"/>
+                                                <connections>
+                                                    <action selector="createFile:" destination="dkY-vz-uXu" eventType="touchUpInside" id="Wdp-4g-zdl"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8K-8H-YgM">
+                                                <rect key="frame" x="150" y="0.0" width="92" height="30"/>
+                                                <state key="normal" title="List Directory"/>
+                                                <connections>
+                                                    <action selector="listDirectory:" destination="dkY-vz-uXu" eventType="touchUpInside" id="UlK-GG-cib"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="j9d-HC-sAI">
+                                        <rect key="frame" x="0.0" y="105" width="242" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FM1-bI-ZVd">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
+                                                <state key="normal" title="View File Content"/>
+                                                <connections>
+                                                    <action selector="viewFileContent:" destination="dkY-vz-uXu" eventType="touchUpInside" id="eCj-kz-ISV"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vm-VW-nly">
+                                                <rect key="frame" x="170" y="0.0" width="72" height="30"/>
+                                                <state key="normal" title="Delete File"/>
+                                                <connections>
+                                                    <action selector="deleteFile:" destination="dkY-vz-uXu" eventType="touchUpInside" id="ZKV-nv-3na"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PkT-6f-441">
+                                        <rect key="frame" x="0.0" y="210" width="242" height="30"/>
+                                        <state key="normal" title="Picker"/>
+                                        <connections>
+                                            <action selector="pickerBtnPressed:" destination="dkY-vz-uXu" eventType="touchUpInside" id="3OK-vD-4Ab"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6z3-d9-sw9" firstAttribute="centerX" secondItem="Zcb-bX-tIw" secondAttribute="centerX" id="GKs-jA-t56"/>
+                            <constraint firstItem="6z3-d9-sw9" firstAttribute="top" secondItem="fV0-AU-cvP" secondAttribute="bottom" constant="150" id="RRS-sl-fNv"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Tools" id="IJU-q2-aFo"/>
                 </viewController>

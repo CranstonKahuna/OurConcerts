@@ -40,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3415D9341F635091004935F1 /* OurConcerts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OurConcerts.entitlements; sourceTree = "<group>"; };
 		347527501F58D1F000BC3C1E /* ToolsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolsVC.swift; sourceTree = "<group>"; };
 		3483FE631F42734B000759A3 /* CDUtilityFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDUtilityFunctions.swift; sourceTree = "<group>"; };
 		348703391F3BFBB6002BF779 /* OurConcerts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OurConcerts.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +110,7 @@
 		3487033B1F3BFBB6002BF779 /* OurConcerts */ = {
 			isa = PBXGroup;
 			children = (
+				3415D9341F635091004935F1 /* OurConcerts.entitlements */,
 				348703711F3C6ED5002BF779 /* Controller */,
 				3487036D1F3C6D6F002BF779 /* Model */,
 				3487036E1F3C6D86002BF779 /* View */,
@@ -237,6 +239,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 28MKEBVHS8;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					3487034F1F3BFBB6002BF779 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -465,6 +472,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OurConcerts/OurConcerts.entitlements;
 				DEVELOPMENT_TEAM = 28MKEBVHS8;
 				INFOPLIST_FILE = OurConcerts/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
@@ -479,6 +487,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OurConcerts/OurConcerts.entitlements;
 				DEVELOPMENT_TEAM = 28MKEBVHS8;
 				INFOPLIST_FILE = OurConcerts/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
