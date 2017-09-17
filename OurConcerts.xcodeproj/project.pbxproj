@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3415D9361F6A4E44004935F1 /* ExportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415D9351F6A4E44004935F1 /* ExportVC.swift */; };
 		347527511F58D1F000BC3C1E /* ToolsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347527501F58D1F000BC3C1E /* ToolsVC.swift */; };
 		3483FE641F42734B000759A3 /* CDUtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3483FE631F42734B000759A3 /* CDUtilityFunctions.swift */; };
 		3487033D1F3BFBB6002BF779 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3487033C1F3BFBB6002BF779 /* AppDelegate.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		3415D9341F635091004935F1 /* OurConcerts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OurConcerts.entitlements; sourceTree = "<group>"; };
+		3415D9351F6A4E44004935F1 /* ExportVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportVC.swift; sourceTree = "<group>"; };
 		347527501F58D1F000BC3C1E /* ToolsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolsVC.swift; sourceTree = "<group>"; };
 		3483FE631F42734B000759A3 /* CDUtilityFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDUtilityFunctions.swift; sourceTree = "<group>"; };
 		348703391F3BFBB6002BF779 /* OurConcerts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OurConcerts.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +167,7 @@
 				3487036F1F3C6E65002BF779 /* ListConcertsVC.swift */,
 				3487037B1F3EB958002BF779 /* EditConcertVC.swift */,
 				347527501F58D1F000BC3C1E /* ToolsVC.swift */,
+				3415D9351F6A4E44004935F1 /* ExportVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				348703451F3BFBB6002BF779 /* OurConcerts.xcdatamodeld in Sources */,
 				348703731F3C7471002BF779 /* ListConcertsTableViewCell.swift in Sources */,
 				3487033D1F3BFBB6002BF779 /* AppDelegate.swift in Sources */,
+				3415D9361F6A4E44004935F1 /* ExportVC.swift in Sources */,
 				3487037C1F3EB958002BF779 /* EditConcertVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

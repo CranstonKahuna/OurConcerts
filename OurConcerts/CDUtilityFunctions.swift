@@ -1,6 +1,7 @@
 //
 //  CDUtilityFunctions.swift
 //  OurConcerts
+//  Core Data Utility Functions
 //
 //  Created by Dean Thomas on 8/14/17.
 //  Copyright © 2017 Dean Thomas. All rights reserved.
@@ -31,4 +32,21 @@ func fetchBSN(sn: String) throws -> BandShortName {
         throw(error)
     }
     return rbsn
+}
+
+func fetchConcerts() -> [Concerts] {
+    let fetchRequest: NSFetchRequest<Concerts> = Concerts.fetchRequest()
+    do {
+        let results = try context.fetch(fetchRequest)
+        for result in results {
+            print("\t\(result.toBandShortName?.bandShortName ?? "None") \(result.date ?? NSDate())")
+        }
+        return results
+        
+    } catch {
+        print("Failed to fetch concerts")
+        let error = error as NSError
+        print("\(error)")
+        return []
+    }
 }

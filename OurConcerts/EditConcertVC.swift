@@ -20,7 +20,6 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
         bandShortNameLbl.delegate = self
         datePicker.setValue(UIColor.white, forKey: "textColor")
 
-
         if concert != nil  {
             datePicker.date = concert!.date! as Date
             let shortName = concert?.toBandShortName?.bandShortName
@@ -31,9 +30,7 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
             }
         }
         
-
         // Do any additional setup after loading the view.
-        
 //        if let topItem = self.navigationController?.navigationBar.topItem {
 //            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
 //        }
@@ -53,6 +50,8 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
     }
  */
+    
+    // MARK: Button Actions
 
     @IBAction func saveBtnPressed(_ sender: Any) {
         if let bandShortName = bandShortNameLbl.text?.trimmingCharacters(in: .whitespacesAndNewlines) {
