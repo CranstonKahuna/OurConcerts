@@ -38,11 +38,7 @@ func fetchConcerts() -> [Concerts] {
     let fetchRequest: NSFetchRequest<Concerts> = Concerts.fetchRequest()
     do {
         let results = try context.fetch(fetchRequest)
-        for result in results {
-            print("\t\(result.toBandShortName?.bandShortName ?? "None") \(result.date ?? NSDate())")
-        }
         return results
-        
     } catch {
         print("Failed to fetch concerts")
         let error = error as NSError

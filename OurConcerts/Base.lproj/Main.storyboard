@@ -303,7 +303,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="File Name?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMp-7a-xcE">
-                                <rect key="frame" x="107" y="94" width="200" height="40"/>
+                                <rect key="frame" x="107" y="244" width="200" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="qAG-Eq-5fU"/>
                                     <constraint firstAttribute="width" constant="200" id="vAC-xW-9Ii"/>
@@ -313,7 +313,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="File Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OGR-gE-22i">
-                                <rect key="frame" x="107" y="154" width="200" height="40"/>
+                                <rect key="frame" x="107" y="304" width="200" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="RLj-aW-lJW"/>
                                     <constraint firstAttribute="height" constant="40" id="jLS-RG-Tfv"/>
@@ -322,50 +322,30 @@
                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
-                            <button contentMode="scaleToFill" enabled="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="biN-UF-reS">
-                                <rect key="frame" x="107" y="234" width="200" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First, enter a filename and hit &quot;Done&quot; on the keyboard. Then select a location for that file." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TpI-GU-8Zz" userLabel="Explain">
+                                <rect key="frame" x="82" y="104" width="250" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="46w-0u-cq5"/>
-                                    <constraint firstAttribute="width" constant="200" id="xhf-cm-0Yq"/>
+                                    <constraint firstAttribute="height" constant="120" id="AxS-9O-2gc"/>
+                                    <constraint firstAttribute="width" constant="250" id="aPF-a0-sb8"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="25"/>
-                                <state key="normal" title="Select Location">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled" title="Select Location">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="selected">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="locationBtnPressed:" destination="HJO-za-yot" eventType="touchUpInside" id="4qK-0x-xcd"/>
-                                </connections>
-                            </button>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="biN-UF-reS" firstAttribute="centerX" secondItem="5Xh-hx-rkG" secondAttribute="centerX" id="RS7-iF-2cr"/>
-                            <constraint firstItem="UMp-7a-xcE" firstAttribute="top" secondItem="icx-WS-jv9" secondAttribute="bottom" constant="30" id="ibO-cL-MAC"/>
+                            <constraint firstItem="TpI-GU-8Zz" firstAttribute="top" secondItem="icx-WS-jv9" secondAttribute="bottom" constant="40" id="7GS-fC-k58"/>
+                            <constraint firstItem="UMp-7a-xcE" firstAttribute="top" secondItem="TpI-GU-8Zz" secondAttribute="bottom" constant="20" id="Zeg-6A-LiA"/>
                             <constraint firstItem="OGR-gE-22i" firstAttribute="centerX" secondItem="5Xh-hx-rkG" secondAttribute="centerX" id="n1v-rh-Osb"/>
+                            <constraint firstItem="TpI-GU-8Zz" firstAttribute="centerX" secondItem="5Xh-hx-rkG" secondAttribute="centerX" id="tjv-um-9BC"/>
                             <constraint firstItem="OGR-gE-22i" firstAttribute="top" secondItem="UMp-7a-xcE" secondAttribute="bottom" constant="20" id="xPP-2N-gnF"/>
                             <constraint firstItem="UMp-7a-xcE" firstAttribute="centerX" secondItem="5Xh-hx-rkG" secondAttribute="centerX" id="zBU-03-nFk"/>
-                            <constraint firstItem="biN-UF-reS" firstAttribute="top" secondItem="OGR-gE-22i" secondAttribute="bottom" constant="40" id="zI2-mZ-yM6"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="fileNameLbl" destination="OGR-gE-22i" id="Be4-wD-vbV"/>
-                        <outlet property="locationBtn" destination="biN-UF-reS" id="aDv-vQ-jDI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DuT-vW-ue9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -523,7 +503,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4oT-2x-FEg" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Tools" id="IJU-q2-aFo"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="pyV-5a-ziU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pyV-5a-ziU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
