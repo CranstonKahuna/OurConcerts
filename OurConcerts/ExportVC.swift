@@ -28,6 +28,7 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentMenuDelegate, U
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         fileNameLbl.resignFirstResponder()
+        self.navigationController?.popViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,7 +61,7 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentMenuDelegate, U
             }
             fileNameLbl.resignFirstResponder()
 
-            var tpath = NSString(string: tmpDir).appendingPathComponent(fname)
+            let tpath = NSString(string: tmpDir).appendingPathComponent(fname)
             let concerts = fetchConcerts()
             if concerts.count == 0 {
                 // No concerts fetched: Display alert
@@ -70,9 +71,8 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentMenuDelegate, U
                 return true
             }
             writeJsonConcerts(concerts: concerts, toFile: tpath)
-            let path = NSString(string: tmpDir).appendingPathComponent(fname)
-            let urlToPath: URL = URL(fileURLWithPath: path)
             
+            let urlToPath: URL = URL(fileURLWithPath: tpath)            
             let importMenu = UIDocumentMenuViewController(url: urlToPath, in: .exportToService)
             importMenu.delegate = self
             importMenu.modalPresentationStyle = .formSheet
