@@ -15,9 +15,6 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentMenuDelegate, U
     
     var fileManager = FileManager()
     var tmpDir = NSTemporaryDirectory() as String
-    var tpath: String = ""
-    let jheader: String = "{ \"concerts\": [ "
-    let jtail: String = "\n]\n}"
     var fname: String = ""
     
     override func viewDidLoad() {
@@ -26,6 +23,11 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentMenuDelegate, U
         self.fileNameLbl.becomeFirstResponder()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        fileNameLbl.resignFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,13 +51,20 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentMenuDelegate, U
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if fileNameLbl.text != nil && fileNameLbl.text != "" {
             fname = fileNameLbl.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            fileNameLbl.resignFirstResponder()
-
-            tpath = NSString(string: tmpDir).appendingPathComponent(fname)
-            let concerts = fetchConcerts()
-            if concerts.count == 0 {
+            if fname == "" {
                 // No file name: Display alert
                 let alertController = UIAlertController(title: "We need a file name!", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+                return true
+            }
+            fileNameLbl.resignFirstResponder()
+
+            var tpath = NSString(string: tmpDir).appendingPathComponent(fname)
+            let concerts = fetchConcerts()
+            if concerts.count == 0 {
+                // No concerts fetched: Display alert
+                let alertController = UIAlertController(title: "No concerts to export", message: nil, preferredStyle: UIAlertControllerStyle.alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alertController, animated: true, completion: nil)
                 return true
@@ -79,15 +88,13 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentMenuDelegate, U
     }
     
     func writeJsonConcerts(concerts: [Concerts], toFile: String) {
+        let jheader: String = "{ \"concerts\": [ "
+        let jtail: String = "\n]\n}"
         do {
-//            try jheader.write(toFile: toFile, atomically: true, encoding: String.Encoding.utf8)
             var exportString = jheader
             var first = true
             for concert in concerts {
-                let dF = DateFormatter()
-                dF.dateStyle = .short
-                dF.timeStyle = .none
-                let ds = dF.string(from: concert.date! as Date)
+                let ds = dbDateFormat.date2DBDateStr(date: concert.date! as Date)
                 let shortName = concert.toBandShortName?.bandShortName! ?? "None"
                 if !first {
                     exportString.append(",\n")
@@ -95,7 +102,7 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentMenuDelegate, U
                     first = false
                 }
                 exportString.append("{ \"Date\": \"\(ds)\", \"BSName\": \"\(shortName)\" }")
-                            }
+            }
             exportString.append(jtail)
             try exportString.write(toFile: toFile, atomically: true, encoding: String.Encoding.utf8)
         } catch {

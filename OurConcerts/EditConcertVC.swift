@@ -29,11 +29,16 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
                 bandShortNameLbl.text = concert?.toBandShortName?.bandShortName
             }
         }
-        
+
         // Do any additional setup after loading the view.
 //        if let topItem = self.navigationController?.navigationBar.topItem {
 //            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
 //        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.popViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {
