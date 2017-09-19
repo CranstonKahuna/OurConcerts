@@ -21,8 +21,6 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentMenuDelegate, U
         super.viewDidLoad()
         fileNameLbl.delegate = self
         self.fileNameLbl.becomeFirstResponder()
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -35,7 +33,6 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentMenuDelegate, U
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation
@@ -72,7 +69,7 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentMenuDelegate, U
             }
             writeJsonConcerts(concerts: concerts, toFile: tpath)
             
-            let urlToPath: URL = URL(fileURLWithPath: tpath)            
+            let urlToPath: URL = URL(fileURLWithPath: tpath)
             let importMenu = UIDocumentMenuViewController(url: urlToPath, in: .exportToService)
             importMenu.delegate = self
             importMenu.modalPresentationStyle = .formSheet
@@ -133,7 +130,6 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentMenuDelegate, U
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         dismiss(animated: true, completion: nil)
         self.fileNameLbl.becomeFirstResponder()
-
     }
 
 }
