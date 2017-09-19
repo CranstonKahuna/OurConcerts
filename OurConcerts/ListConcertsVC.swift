@@ -146,22 +146,20 @@ class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelega
 
     func generateTestData() {
         let concert = Concerts(context: context)
-        concert.date = NSDate()
+        concert.date = dbDateFormat.date2DBDateStr(date: Date())
         let bsn = BandShortName(context: context)
         bsn.bandShortName = "sci"
         concert.toBandShortName = bsn
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd HH:mm"
-        var someDateTime = formatter.date(from: "2016/10/08 22:31")
+        var someDateTime = "2016/10/08"
         
         let concert2 = Concerts(context: context)
-        concert2.date = someDateTime! as NSDate
+        concert2.date = someDateTime
         concert2.toBandShortName = bsn
         
-        someDateTime = formatter.date(from: "2017/12/31 22:00")
+        someDateTime = "2017/12/31"
         let concert3 = Concerts(context: context)
-        concert3.date = someDateTime! as NSDate
+        concert3.date = someDateTime
         concert3.toBandShortName = bsn
         ad.saveContext()
     }

@@ -8,20 +8,23 @@
 
 import UIKit
 
-var n = 0
+let _dateFormatter = DateFormatter()
 
 class ListConcertsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var bandName: UILabel!
 
-
     func configureCell(concert: Concerts)  {
         //update cell
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-        dateLbl.text = dateFormatter.string(from: concert.date! as Date)
+        var cdate = dbDateFormat.dbDateStr2Date(date: concert.date!)
+        if cdate == nil {
+            cdate = Date()
+        }
+        _dateFormatter.dateStyle = .long
+        _dateFormatter.timeStyle = .none
+        
+        dateLbl.text = _dateFormatter.string(from: cdate!)
         bandName.text = concert.toBandShortName?.bandShortName
     }
 }

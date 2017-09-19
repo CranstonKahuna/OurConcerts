@@ -16,6 +16,7 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentMenuDelegate, U
     var fileManager = FileManager()
     var tmpDir = NSTemporaryDirectory() as String
     var fname: String = ""
+    var tpath: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +24,11 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentMenuDelegate, U
         self.fileNameLbl.becomeFirstResponder()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        fileNameLbl.resignFirstResponder()
-        self.navigationController?.popViewController(animated: true)
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        fileNameLbl.resignFirstResponder()
+//        self.navigationController?.popViewController(animated: true)
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -58,7 +59,7 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentMenuDelegate, U
             }
             fileNameLbl.resignFirstResponder()
 
-            let tpath = NSString(string: tmpDir).appendingPathComponent(fname)
+            tpath = NSString(string: tmpDir).appendingPathComponent(fname)
             let concerts = fetchConcerts()
             if concerts.count == 0 {
                 // No concerts fetched: Display alert
@@ -91,14 +92,13 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentMenuDelegate, U
             var exportString = jheader
             var first = true
             for concert in concerts {
-                let ds = dbDateFormat.date2DBDateStr(date: concert.date! as Date)
                 let shortName = concert.toBandShortName?.bandShortName! ?? "None"
                 if !first {
                     exportString.append(",\n")
                 } else {
                     first = false
                 }
-                exportString.append("{ \"Date\": \"\(ds)\", \"BSName\": \"\(shortName)\" }")
+                exportString.append("{ \"Date\": \"\(concert.date!)\", \"BSName\": \"\(shortName)\" }")
             }
             exportString.append(jtail)
             try exportString.write(toFile: toFile, atomically: true, encoding: String.Encoding.utf8)
@@ -110,10 +110,17 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentMenuDelegate, U
     @available(iOS 8.0, *)
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         let alertController = UIAlertController(title: "Concerts Exported to \(fname)", message: nil, preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, 
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,
                                                 handler: {(alert: UIAlertAction!) in self.navigationController?.popViewController(animated: true)}))
-            
         self.present(alertController, animated: true, completion: nil)
+        do {
+            try fileManager.removeItem(atPath: tpath as String)
+        } catch {
+            print("Failed to delete file")
+            let error = error as NSError
+            print("\(error)")
+        }
+
     }
     
     @available(iOS 8.0, *)

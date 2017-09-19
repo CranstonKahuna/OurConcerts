@@ -31,7 +31,7 @@ class AddConcertVC: UIViewController, UITextFieldDelegate {
             do {
                 let bsn = try fetchBSN(sn: bandShortName)
                 let concert = Concerts(context: context)
-                concert.date = datePicker.date as NSDate
+                concert.date = dbDateFormat.date2DBDateStr(date: datePicker.date)
                 concert.toBandShortName = bsn
                 ad.saveContext()
             } catch {

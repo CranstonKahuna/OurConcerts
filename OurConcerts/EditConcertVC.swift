@@ -21,7 +21,11 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
         datePicker.setValue(UIColor.white, forKey: "textColor")
 
         if concert != nil  {
-            datePicker.date = concert!.date! as Date
+            var dbDate = dbDateFormat.dbDateStr2Date(date: concert!.date!)
+            if dbDate == nil {
+                dbDate = Date()
+            }
+            datePicker.date = dbDate!
             let shortName = concert?.toBandShortName?.bandShortName
             if shortName == nil {
                 bandShortNameLbl.text = "Unknown"
@@ -38,7 +42,7 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,7 +66,7 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
         if let bandShortName = bandShortNameLbl.text?.trimmingCharacters(in: .whitespacesAndNewlines) {
             do {
                 let bsn = try fetchBSN(sn: bandShortName)
-                concert!.date = datePicker.date as NSDate
+                concert!.date = dbDateFormat.date2DBDateStr(date: datePicker.date)
                 concert!.toBandShortName = bsn
                 ad.saveContext()
             } catch {
