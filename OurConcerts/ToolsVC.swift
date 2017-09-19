@@ -9,7 +9,7 @@
 import UIKit
 import MobileCoreServices
 
-class ToolsVC: UIViewController, UIDocumentMenuDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate {
+class ToolsVC: UIViewController, UIDocumentPickerDelegate, UINavigationControllerDelegate {
     
     var fileManager = FileManager()
     var tmpDir = NSTemporaryDirectory() as String
@@ -113,51 +113,24 @@ class ToolsVC: UIViewController, UIDocumentMenuDelegate, UIDocumentPickerDelegat
     
     // MARK: Document Picker Functions
 
-    @IBAction func pickerBtnPressed(_ sender: UIButton) {
-//        let importMenu = UIDocumentMenuViewController(documentTypes: [String(kUTTypeContent)], in: .open)
-        let path = NSString(string: tmpDir).appendingPathComponent(fileName)
-        let urlToPath: URL = URL(fileURLWithPath: path)
-        print("pickerBtnPressed path \(path)\n             url \(urlToPath)")
-
-        let importMenu = UIDocumentMenuViewController(url: urlToPath, in: .exportToService)
+    @IBAction func importBtnPressed(_ sender: UIButton) {
+        let importMenu = UIDocumentPickerViewController(documentTypes: [kUTTypeItem as String], in: .import)
         importMenu.delegate = self
         importMenu.modalPresentationStyle = .formSheet
 
-        print("pickerBtnPressed before addOption")
-        importMenu.addOption(withTitle: "iPhone", image: nil, order: .first) {
-            print("In addOption")
-        }
-        print("pickerBtnPressed after addOption")
+//        importMenu.addOption(withTitle: "iPhone", image: nil, order: .first) {
+//            print("In addOption")
+//        }
         self.present(importMenu, animated: true, completion: nil)
     }
     
     @available(iOS 8.0, *)
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-        let cico = url as URL
-        print("The Url is : \(cico)")
-        //optional, case PDF -> render
-        //displayPDFweb.loadRequest(NSURLRequest(url: cico) as URLRequest)
-    }
-    
-    @available(iOS 8.0, *)
-    public func documentMenu(_ documentMenu: UIDocumentMenuViewController, didPickDocumentPicker documentPicker: UIDocumentPickerViewController) {
-        print("documentMenu didPickDocumentPicker")
-        documentPicker.delegate = self
-        present(documentPicker, animated: true, completion: nil)
+        print("documentPicker didPickDocumentAt Url: \(url)")
     }
 
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         dismiss(animated: true, completion: nil)
     }
     
-    // MARK: Save Picker
-    
-    @IBAction func savePickerBtn(_ sender: UIButton) {
-        print("savePickerBtn called")
-        if FileManager.default.ubiquityIdentityToken != nil {
-            print("iCloud Available")
-        } else {
-            print("iCloud Unavailable")
-        }
-    }
 }

@@ -211,7 +211,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="6z3-d9-sw9">
-                                <rect key="frame" x="86" y="214" width="242" height="350"/>
+                                <rect key="frame" x="86" y="214" width="242" height="270"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="bEh-hC-8Ck">
                                         <rect key="frame" x="0.0" y="0.0" width="242" height="30"/>
@@ -256,20 +256,13 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PkT-6f-441">
                                         <rect key="frame" x="0.0" y="160" width="242" height="30"/>
-                                        <state key="normal" title="Picker"/>
+                                        <state key="normal" title="Import"/>
                                         <connections>
-                                            <action selector="pickerBtnPressed:" destination="dkY-vz-uXu" eventType="touchUpInside" id="3OK-vD-4Ab"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mpr-ar-PWV">
-                                        <rect key="frame" x="0.0" y="240" width="242" height="30"/>
-                                        <state key="normal" title="Save Picker"/>
-                                        <connections>
-                                            <action selector="savePickerBtn:" destination="dkY-vz-uXu" eventType="touchUpInside" id="K2u-M4-oP3"/>
+                                            <action selector="importBtnPressed:" destination="dkY-vz-uXu" eventType="touchUpInside" id="Wl6-lq-GOr"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DFv-Dd-Swg">
-                                        <rect key="frame" x="0.0" y="320" width="242" height="30"/>
+                                        <rect key="frame" x="0.0" y="240" width="242" height="30"/>
                                         <state key="normal" title="Export"/>
                                         <connections>
                                             <segue destination="HJO-za-yot" kind="show" id="Lda-Cj-MoL"/>

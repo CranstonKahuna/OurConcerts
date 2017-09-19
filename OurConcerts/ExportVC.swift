@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentMenuDelegate, UIDocumentPickerDelegate {
+class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentPickerDelegate {
 
     @IBOutlet weak var fileNameLbl: UITextField!
     
@@ -57,7 +57,6 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentMenuDelegate, U
                 self.present(alertController, animated: true, completion: nil)
                 return true
             }
-            fileNameLbl.resignFirstResponder()
 
             tpath = NSString(string: tmpDir).appendingPathComponent(fname)
             let concerts = fetchConcerts()
@@ -71,16 +70,16 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentMenuDelegate, U
             writeJsonConcerts(concerts: concerts, toFile: tpath)
             
             let urlToPath: URL = URL(fileURLWithPath: tpath)
-            let importMenu = UIDocumentMenuViewController(url: urlToPath, in: .exportToService)
-            importMenu.delegate = self
-            importMenu.modalPresentationStyle = .formSheet
+            let exportPicker = UIDocumentPickerViewController(url: urlToPath, in: .exportToService)
+            exportPicker.delegate = self
             
-//            importMenu.addOption(withTitle: "iPhone", image: nil, order: .first) {
+//            exportPicker.addOption(withTitle: "iPhone", image: nil, order: .first) {
 //                // ToDo Add local option for saving
 //                print("In addOption")
 //            }
             
-            self.present(importMenu, animated: true, completion: nil)
+            fileNameLbl.resignFirstResponder()
+            self.present(exportPicker, animated: true, completion: nil)
         }
         return true
     }
@@ -109,10 +108,21 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentMenuDelegate, U
     
     @available(iOS 8.0, *)
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-        let alertController = UIAlertController(title: "Concerts Exported to \(fname)", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        let filename = url.lastPathComponent
+        let alertController = UIAlertController(title: "Concerts Exported to \(filename)", message: nil, preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,
                                                 handler: {(alert: UIAlertAction!) in self.navigationController?.popViewController(animated: true)}))
         self.present(alertController, animated: true, completion: nil)
+        deleteTmpFile()
+    }
+    
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        dismiss(animated: true, completion: nil)
+        self.fileNameLbl.becomeFirstResponder()
+        deleteTmpFile()
+    }
+    
+    func deleteTmpFile() {
         do {
             try fileManager.removeItem(atPath: tpath as String)
         } catch {
@@ -120,23 +130,6 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentMenuDelegate, U
             let error = error as NSError
             print("\(error)")
         }
-
-    }
-    
-    @available(iOS 8.0, *)
-    public func documentMenu(_ documentMenu: UIDocumentMenuViewController, didPickDocumentPicker documentPicker: UIDocumentPickerViewController) {
-        documentPicker.delegate = self
-        present(documentPicker, animated: true, completion: nil)
-    }
-    
-    func documentMenuWasCancelled(_ controller: UIDocumentMenuViewController) {
-        dismiss(animated: true, completion: nil)
-        self.fileNameLbl.becomeFirstResponder()
-    }
-    
-    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        dismiss(animated: true, completion: nil)
-        self.fileNameLbl.becomeFirstResponder()
     }
 
 }
