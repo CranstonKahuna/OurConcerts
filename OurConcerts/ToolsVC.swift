@@ -114,19 +114,65 @@ class ToolsVC: UIViewController, UIDocumentPickerDelegate, UINavigationControlle
     // MARK: Document Picker Functions
 
     @IBAction func importBtnPressed(_ sender: UIButton) {
-        let importMenu = UIDocumentPickerViewController(documentTypes: [kUTTypeItem as String], in: .import)
-        importMenu.delegate = self
-        importMenu.modalPresentationStyle = .formSheet
+        let importPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeItem as String], in: .import)
+        importPicker.delegate = self
+        importPicker.modalPresentationStyle = .formSheet
 
-//        importMenu.addOption(withTitle: "iPhone", image: nil, order: .first) {
+//        importPicker.addOption(withTitle: "iPhone", image: nil, order: .first) {
 //            print("In addOption")
 //        }
-        self.present(importMenu, animated: true, completion: nil)
+        self.present(importPicker, animated: true, completion: nil)
+    }
+    
+    struct concertFromJson: Codable {
+        var Date: String
+        var BSName: String
     }
     
     @available(iOS 8.0, *)
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-        print("documentPicker didPickDocumentAt Url: \(url)")
+        let fn = url.lastPathComponent
+        var jsonData: Data
+        var json: Any
+        do {
+            jsonData = try Data(contentsOf: url)
+        } catch {
+            let error = error as NSError
+            infoAlert(title: "Cannot read file \(fn)", message: "\(error)", view: self)
+            return
+        }
+        if jsonData.count == 0 {
+            infoAlert(title: "file \(fn) is empty", message: nil, view: self)
+            return
+        }
+        do {
+            json = try JSONSerialization.jsonObject(with: jsonData, options: [])
+        } catch {
+            let jsonString = String(data: jsonData, encoding: .utf8)
+            infoAlert(title: "Cannot parse file \(fn) as json", message: "\(String(describing: jsonString))", view: self)
+            return
+        }
+        guard let dictionary = json as? [String: Any] else {
+            infoAlert(title: "Outermost json of \(fn) not a dictionary", message: "\(jsonData)", view: self)
+            return
+        }
+        guard let concerts = dictionary["concerts"] as? [Any] else {
+            infoAlert(title: "No concerts element in json of \(fn)", message: "\(jsonData)", view: self)
+            return
+        }
+        var conCount = 0
+        for concert in concerts {
+            if let c = concert as? [String: String] {
+                if let bsName = c["BSName"], let date = c["Date"] {
+                    if addConcert(bsName: bsName, date: date, view: self) {
+                        conCount += 1
+                    }
+                } else {
+                    infoAlert(title: "No BSName or Date in \(c): Skipping", message: nil, view: self)
+                }
+            }
+        }
+        infoAlert(title: "\(conCount) concerts added", message: nil, view: self)
     }
 
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {

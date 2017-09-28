@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 let dbDateFormat = DBDateFormat()
 
@@ -35,4 +36,11 @@ class DBDateFormat {
     func date2DBDateStr(date: Date) -> String {
         return _dateFormatter.string(from: date)
     }
+}
+
+func infoAlert(title: String?, message: String?, view: UIViewController) {
+    let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+    alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,
+                                            handler: {(alert: UIAlertAction!) in view.navigationController?.popViewController(animated: true)}))
+    view.present(alertController, animated: true, completion: nil)
 }

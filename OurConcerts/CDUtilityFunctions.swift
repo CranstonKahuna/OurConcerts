@@ -9,6 +9,28 @@
 
 import Foundation
 import CoreData
+import UIKit
+
+func addConcert (bsName: String?, date: String, view: UIViewController) -> Bool {
+    if let bandShortName = bsName?.trimmingCharacters(in: .whitespacesAndNewlines) {
+        do {
+            let bsn = try fetchBSN(sn: bandShortName)
+            if dbDateFormat.dbDateStr2Date(date: date) == nil {
+                infoAlert(title: "Unrecognized Date: \(date)", message: "Cannot add to concert list", view: view)
+                return false
+            }
+            let concert = Concerts(context: context)
+            concert.date = date
+            concert.toBandShortName = bsn
+            ad.saveContext()
+        } catch {
+            let error = error as NSError
+            infoAlert(title: "Failed to fetch bandShortName from add: \(error)", message: "\(error)", view: view)
+            return false
+        }
+    }
+    return true
+}
 
 // Fetch the Band Short Name core data object for the short name passed
 // If the short name passed does not exist, create it
@@ -23,9 +45,8 @@ func fetchBSN(sn: String) throws -> BandShortName {
             rbsn = fetchedBSN[0]
             
         } else {
-            let bsn = BandShortName(context: context)
-            bsn.bandShortName = sn
-            rbsn = bsn
+            rbsn = BandShortName(context: context)
+            rbsn.bandShortName = sn
             ad.saveContext()
         }
     } catch {
@@ -33,6 +54,8 @@ func fetchBSN(sn: String) throws -> BandShortName {
     }
     return rbsn
 }
+
+// Fetch all the concerts
 
 func fetchConcerts() -> [Concerts] {
     let fetchRequest: NSFetchRequest<Concerts> = Concerts.fetchRequest()

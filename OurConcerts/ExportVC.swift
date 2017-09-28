@@ -52,9 +52,7 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentPickerDelegate 
             fname = fileNameLbl.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             if fname == "" {
                 // No file name: Display alert
-                let alertController = UIAlertController(title: "We need a file name!", message: nil, preferredStyle: UIAlertControllerStyle.alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alertController, animated: true, completion: nil)
+                infoAlert(title: "We need a file name!", message: nil, view: self)
                 return true
             }
 
@@ -62,9 +60,7 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentPickerDelegate 
             let concerts = fetchConcerts()
             if concerts.count == 0 {
                 // No concerts fetched: Display alert
-                let alertController = UIAlertController(title: "No concerts to export", message: nil, preferredStyle: UIAlertControllerStyle.alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alertController, animated: true, completion: nil)
+                infoAlert(title: "No concerts to export", message: nil, view: self)
                 return true
             }
             writeJsonConcerts(concerts: concerts, toFile: tpath)
@@ -100,7 +96,7 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentPickerDelegate 
                 exportString.append("{ \"Date\": \"\(concert.date!)\", \"BSName\": \"\(shortName)\" }")
             }
             exportString.append(jtail)
-            try exportString.write(toFile: toFile, atomically: true, encoding: String.Encoding.utf8)
+            try exportString.write(toFile: toFile, atomically: true, encoding: .utf8)
         } catch {
             return
         }
@@ -109,10 +105,7 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentPickerDelegate 
     @available(iOS 8.0, *)
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         let filename = url.lastPathComponent
-        let alertController = UIAlertController(title: "Concerts Exported to \(filename)", message: nil, preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,
-                                                handler: {(alert: UIAlertAction!) in self.navigationController?.popViewController(animated: true)}))
-        self.present(alertController, animated: true, completion: nil)
+        infoAlert(title: "Concerts Exported to \(filename)", message: nil, view: self)
         deleteTmpFile()
     }
     
