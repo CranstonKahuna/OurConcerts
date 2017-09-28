@@ -18,7 +18,7 @@ func addConcert (bsName: String?, date: String, view: UIViewController) -> Bool 
     }
     let bandShortName = bsName!.trimmingCharacters(in: .whitespacesAndNewlines)
     if bandShortName == "" {
-        infoAlert(title: "Empty band name", message: "Cannot add the concert", view: view)
+        infoAlert(title: "Blank band name", message: "Cannot add the concert", view: view)
         return false
     }
     if dbDateFormat.dbDateStr2Date(date: date) == nil {

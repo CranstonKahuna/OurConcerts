@@ -64,6 +64,10 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
 
     @IBAction func saveBtnPressed(_ sender: Any) {
         if let bandShortName = bandShortNameLbl.text?.trimmingCharacters(in: .whitespacesAndNewlines) {
+            if bandShortName == "" {
+                infoAlert(title: "Blank band name", message: "Cannot add the concert", view: self)
+                return
+            }
             do {
                 let bsn = try fetchBSN(sn: bandShortName)
                 concert!.date = dbDateFormat.date2DBDateStr(date: datePicker.date)
