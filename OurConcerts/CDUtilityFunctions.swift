@@ -12,22 +12,29 @@ import CoreData
 import UIKit
 
 func addConcert (bsName: String?, date: String, view: UIViewController) -> Bool {
-    if let bandShortName = bsName?.trimmingCharacters(in: .whitespacesAndNewlines) {
-        do {
-            let bsn = try fetchBSN(sn: bandShortName)
-            if dbDateFormat.dbDateStr2Date(date: date) == nil {
-                infoAlert(title: "Unrecognized Date: \(date)", message: "Cannot add to concert list", view: view)
-                return false
-            }
-            let concert = Concerts(context: context)
-            concert.date = date
-            concert.toBandShortName = bsn
-            ad.saveContext()
-        } catch {
-            let error = error as NSError
-            infoAlert(title: "Failed to fetch bandShortName from add: \(error)", message: "\(error)", view: view)
-            return false
-        }
+    if bsName == nil {
+        infoAlert(title: "No band name", message: "Cannot add the concert", view: view)
+        return false
+    }
+    let bandShortName = bsName!.trimmingCharacters(in: .whitespacesAndNewlines)
+    if bandShortName == "" {
+        infoAlert(title: "Empty band name", message: "Cannot add the concert", view: view)
+        return false
+    }
+    if dbDateFormat.dbDateStr2Date(date: date) == nil {
+        infoAlert(title: "Unrecognized Date: \(date)", message: "Cannot add the concert", view: view)
+        return false
+    }
+    do {
+        let bsn = try fetchBSN(sn: bandShortName)
+        let concert = Concerts(context: context)
+        concert.date = date
+        concert.toBandShortName = bsn
+        ad.saveContext()
+    } catch {
+        let error = error as NSError
+        infoAlert(title: "Error looking up band name \(bandShortName)", message: "\(error)", view: view)
+        return false
     }
     return true
 }

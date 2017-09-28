@@ -26,19 +26,9 @@ class AddConcertVC: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func saveBtnPressed(_ sender: Any) {
-        if let bandShortName = bandShortNameLbl.text?.trimmingCharacters(in: .whitespacesAndNewlines) {
-            do {
-                let bsn = try fetchBSN(sn: bandShortName)
-                let concert = Concerts(context: context)
-                concert.date = dbDateFormat.date2DBDateStr(date: datePicker.date)
-                concert.toBandShortName = bsn
-                ad.saveContext()
-            } catch {
-                let error = error as NSError
-                infoAlert(title: "Failed to fetch bandShortName from add: \(error)", message: "\(error)", view: self)
-            }
-        }
-        
+        let bsn = bandShortNameLbl.text
+        let date = dbDateFormat.date2DBDateStr(date: datePicker.date)
+        _ = addConcert(bsName: bsn, date: date, view:self)
     }
     
     // MARK: UITextFieldDelegate
