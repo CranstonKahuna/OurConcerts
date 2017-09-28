@@ -9,6 +9,9 @@
 import UIKit
 import CoreData
 
+// The duration, in microseconds, that the alert will show after hitting "Add"
+let _addAlertTime:useconds_t = 1000000
+
 class AddConcertVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var bandShortNameLbl: UITextField!
@@ -26,9 +29,20 @@ class AddConcertVC: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func saveBtnPressed(_ sender: Any) {
-        let bsn = bandShortNameLbl.text
+        let bsn = bandShortNameLbl!.text
         let date = dbDateFormat.date2DBDateStr(date: datePicker.date)
-        _ = addConcert(bsName: bsn, date: date, view:self)
+        if addConcert(bsName: bsn, date: date, view:self) {
+            let cdate = dbDateFormat.dbDateStr2Date(date: date)
+            let dF = DateFormatter()
+            dF.dateStyle = .long
+            dF.timeStyle = .none
+            let dispDate = dF.string(from: cdate!)
+            let alertController = UIAlertController(title: "Added \(bsn!)\n\(dispDate)", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+            self.present(alertController, animated: true)  { () in
+                usleep(_addAlertTime)
+                alertController.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     // MARK: UITextFieldDelegate
