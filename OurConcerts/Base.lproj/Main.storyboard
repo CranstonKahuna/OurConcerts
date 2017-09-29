@@ -312,10 +312,10 @@
             </objects>
             <point key="canvasLocation" x="2298.5507246376815" y="-1815.4891304347827"/>
         </scene>
-        <!--Add-->
+        <!--Add Concert-->
         <scene sceneID="zYx-3R-DGy">
             <objects>
-                <viewController id="P9m-oX-xBp" customClass="AddConcertVC" customModule="OurConcerts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="P9m-oX-xBp" userLabel="Add Concert" customClass="AddConcertVC" customModule="OurConcerts" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Bl5-5U-7mw"/>
                         <viewControllerLayoutGuide type="bottom" id="Xkf-NX-CvE"/>
@@ -324,84 +324,98 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lXH-GH-Pfg" userLabel="Add Stack View">
-                                <rect key="frame" x="27.5" y="20" width="320" height="598"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our Concerts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0R-AI-LdL">
+                                <rect key="frame" x="88" y="28" width="199" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="8Fe-q8-YFv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="34"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mg7-fV-uAg">
+                                <rect key="frame" x="0.0" y="106" width="375" height="512"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our Concerts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0R-AI-LdL">
-                                        <rect key="frame" x="60.5" y="0.0" width="199" height="60"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="8Fe-q8-YFv"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="34"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Band/Artist Name" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzL-lB-NN8">
-                                        <rect key="frame" x="87" y="96.5" width="146.5" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="18" id="sZU-yE-AaJ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Band/Artist Name (short name)" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="GYM-4k-2oO">
-                                        <rect key="frame" x="0.0" y="151" width="320" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="30O-Df-7tD"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Pv-N3-Okt">
-                                        <rect key="frame" x="141" y="228" width="38" height="22.5"/>
-                                        <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="765-ia-was">
-                                        <rect key="frame" x="0.0" y="287" width="320" height="200"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="yly-DX-kjk"/>
-                                        </constraints>
-                                        <date key="date" timeIntervalSinceReferenceDate="524029713.80797702">
-                                            <!--2017-08-10 03:48:33 +0000-->
-                                        </date>
-                                    </datePicker>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n3U-vu-bZJ">
-                                        <rect key="frame" x="135" y="523.5" width="50" height="74.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="n3U-vu-bZJ" secondAttribute="height" multiplier="1:1.5" id="Hqp-Vm-s2I"/>
-                                            <constraint firstAttribute="width" constant="50" id="uVp-ac-b2Q"/>
-                                        </constraints>
-                                        <state key="normal">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="Add">
-                                                    <attributes>
-                                                        <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="22" name="TimesNewRomanPS-BoldMT"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                        </state>
-                                        <connections>
-                                            <action selector="saveBtnPressed:" destination="P9m-oX-xBp" eventType="touchUpInside" id="Qlf-cn-hZK"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="lXH-GH-Pfg" userLabel="Add Concert Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="427"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Band/Artist Name" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzL-lB-NN8">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="18" id="sZU-yE-AaJ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Band/Artist Name (short name)" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="GYM-4k-2oO">
+                                                <rect key="frame" x="67.5" y="36" width="240" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="30O-Df-7tD"/>
+                                                    <constraint firstAttribute="width" constant="240" id="oY8-Be-pU9"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Pv-N3-Okt">
+                                                <rect key="frame" x="168.5" y="94" width="38" height="22.5"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="765-ia-was">
+                                                <rect key="frame" x="27.5" y="134.5" width="320" height="200"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="yly-DX-kjk"/>
+                                                </constraints>
+                                                <date key="date" timeIntervalSinceReferenceDate="524029713.80797702">
+                                                    <!--2017-08-10 03:48:33 +0000-->
+                                                </date>
+                                            </datePicker>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n3U-vu-bZJ">
+                                                <rect key="frame" x="162.5" y="352.5" width="50" height="74.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="n3U-vu-bZJ" secondAttribute="height" multiplier="1:1.5" id="Hqp-Vm-s2I"/>
+                                                    <constraint firstAttribute="width" constant="50" id="uVp-ac-b2Q"/>
+                                                </constraints>
+                                                <state key="normal">
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="Add">
+                                                            <attributes>
+                                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="22" name="TimesNewRomanPS-BoldMT"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                </state>
+                                                <connections>
+                                                    <action selector="saveBtnPressed:" destination="P9m-oX-xBp" eventType="touchUpInside" id="Qlf-cn-hZK"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="GYM-4k-2oO" firstAttribute="leading" secondItem="lXH-GH-Pfg" secondAttribute="leading" id="FrE-1c-lGb"/>
-                                    <constraint firstAttribute="trailing" secondItem="GYM-4k-2oO" secondAttribute="trailing" id="xmj-6g-jHj"/>
+                                    <constraint firstAttribute="bottom" secondItem="lXH-GH-Pfg" secondAttribute="bottom" id="LAV-6W-0eI"/>
+                                    <constraint firstItem="lXH-GH-Pfg" firstAttribute="centerX" secondItem="Mg7-fV-uAg" secondAttribute="centerX" id="OrK-5J-BCm"/>
+                                    <constraint firstItem="lXH-GH-Pfg" firstAttribute="top" secondItem="Mg7-fV-uAg" secondAttribute="top" id="YcE-iI-irt"/>
+                                    <constraint firstItem="lXH-GH-Pfg" firstAttribute="leading" secondItem="Mg7-fV-uAg" secondAttribute="leading" id="rnk-9R-N92"/>
+                                    <constraint firstAttribute="trailing" secondItem="lXH-GH-Pfg" secondAttribute="trailing" id="wh8-6c-7W5"/>
                                 </constraints>
-                            </stackView>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="lXH-GH-Pfg" firstAttribute="centerX" secondItem="dzd-k0-SfD" secondAttribute="centerX" id="Xbi-t6-hwf"/>
-                            <constraint firstItem="lXH-GH-Pfg" firstAttribute="top" secondItem="Bl5-5U-7mw" secondAttribute="bottom" id="cF3-fM-Ylf"/>
-                            <constraint firstItem="Xkf-NX-CvE" firstAttribute="top" secondItem="lXH-GH-Pfg" secondAttribute="bottom" id="hkN-nO-vvZ"/>
+                            <constraint firstItem="a0R-AI-LdL" firstAttribute="top" secondItem="Bl5-5U-7mw" secondAttribute="bottom" constant="8" id="0NP-ca-UpJ"/>
+                            <constraint firstItem="Mg7-fV-uAg" firstAttribute="width" secondItem="dzd-k0-SfD" secondAttribute="width" id="3xq-G7-NGh"/>
+                            <constraint firstItem="Xkf-NX-CvE" firstAttribute="top" secondItem="Mg7-fV-uAg" secondAttribute="bottom" id="FkX-ao-vGU"/>
+                            <constraint firstItem="gzL-lB-NN8" firstAttribute="width" secondItem="dzd-k0-SfD" secondAttribute="width" id="Hd2-7N-xxO"/>
+                            <constraint firstItem="a0R-AI-LdL" firstAttribute="centerX" secondItem="dzd-k0-SfD" secondAttribute="centerX" id="TmW-lX-IXr"/>
+                            <constraint firstItem="Mg7-fV-uAg" firstAttribute="leading" secondItem="dzd-k0-SfD" secondAttribute="leading" id="fgN-1V-7lC"/>
+                            <constraint firstAttribute="trailing" secondItem="Mg7-fV-uAg" secondAttribute="trailing" id="ndd-Hl-9I0"/>
+                            <constraint firstItem="Mg7-fV-uAg" firstAttribute="top" secondItem="a0R-AI-LdL" secondAttribute="bottom" constant="18" id="ud4-Mv-NeM"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Add" id="jkG-Rt-coB"/>
