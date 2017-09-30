@@ -114,7 +114,7 @@
                                 <color key="backgroundColor" red="1" green="0.34509803919999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="CGl-GE-LFs"/>
-                                    <constraint firstAttribute="width" constant="60" id="wXE-t9-DZv"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="wXE-t9-DZv"/>
                                 </constraints>
                                 <state key="normal" title="Delete">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -201,6 +201,7 @@
                             <constraint firstAttribute="trailing" secondItem="SfG-Xs-hXn" secondAttribute="trailing" id="6UV-wW-nsB"/>
                             <constraint firstItem="SfG-Xs-hXn" firstAttribute="leading" secondItem="MAm-mS-5Sy" secondAttribute="leading" id="AXg-JS-cRX"/>
                             <constraint firstItem="dkN-Ps-MpO" firstAttribute="top" secondItem="SfG-Xs-hXn" secondAttribute="bottom" id="DNq-IA-SHo"/>
+                            <constraint firstItem="ryG-Jc-VHv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="MAm-mS-5Sy" secondAttribute="leadingMargin" constant="100" id="LP8-zb-TsE"/>
                             <constraint firstItem="SfG-Xs-hXn" firstAttribute="top" secondItem="MAm-mS-5Sy" secondAttribute="top" constant="56" id="ZZs-5a-v1s"/>
                             <constraint firstItem="SfG-Xs-hXn" firstAttribute="width" secondItem="MAm-mS-5Sy" secondAttribute="width" id="f66-db-MRm"/>
                             <constraint firstItem="ryG-Jc-VHv" firstAttribute="top" secondItem="VXB-sR-HSv" secondAttribute="bottom" constant="8" id="u7n-mT-beQ"/>
@@ -276,7 +277,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First, enter a filename and hit &quot;Done&quot; on the keyboard. Then select a location for that file." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TpI-GU-8Zz" userLabel="Explain">
                                 <rect key="frame" x="61" y="104" width="253" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="AxS-9O-2gc"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="AxS-9O-2gc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -292,7 +293,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="File Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OGR-gE-22i">
-                                <rect key="frame" x="76" y="304" width="223.5" height="40"/>
+                                <rect key="frame" x="76" y="304" width="223" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="jLS-RG-Tfv"/>
                                 </constraints>
@@ -305,7 +306,6 @@
                         <constraints>
                             <constraint firstItem="TpI-GU-8Zz" firstAttribute="top" secondItem="icx-WS-jv9" secondAttribute="bottom" constant="40" id="7GS-fC-k58"/>
                             <constraint firstItem="OGR-gE-22i" firstAttribute="leading" relation="lessThanOrEqual" secondItem="5Xh-hx-rkG" secondAttribute="leadingMargin" constant="60" id="BX6-hp-sY5"/>
-                            <constraint firstItem="TpI-GU-8Zz" firstAttribute="leading" secondItem="5Xh-hx-rkG" secondAttribute="leadingMargin" constant="45" id="FJ6-Je-EIy"/>
                             <constraint firstItem="UMp-7a-xcE" firstAttribute="centerX" secondItem="5Xh-hx-rkG" secondAttribute="centerX" id="I3G-1a-aLe"/>
                             <constraint firstItem="OGR-gE-22i" firstAttribute="centerX" secondItem="5Xh-hx-rkG" secondAttribute="centerX" id="PMB-yS-r6g"/>
                             <constraint firstItem="UMp-7a-xcE" firstAttribute="top" secondItem="TpI-GU-8Zz" secondAttribute="bottom" constant="20" id="Zeg-6A-LiA"/>
@@ -360,10 +360,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Band/Artist Name (short name)" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="GYM-4k-2oO">
-                                                <rect key="frame" x="67.5" y="36" width="240" height="40"/>
+                                                <rect key="frame" x="63" y="36" width="249.5" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="30O-Df-7tD"/>
-                                                    <constraint firstAttribute="width" constant="240" id="oY8-Be-pU9"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="oY8-Be-pU9"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
