@@ -12,6 +12,7 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var bandShortNameLbl: UITextField!
+    @IBOutlet weak var ratingControl: RatingControl!
     
     var concert: Concerts?
 
@@ -31,6 +32,9 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
                 bandShortNameLbl.text = "Unknown"
             } else {
                 bandShortNameLbl.text = concert?.toBandShortName?.bandShortName
+            }
+            if let rating = concert?.rating {
+                ratingControl.rating = rating
             }
         }
 
@@ -72,6 +76,7 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
                 let bsn = try fetchBSN(sn: bandShortName)
                 concert!.date = dbDateFormat.date2DBDateStr(date: datePicker.date)
                 concert!.toBandShortName = bsn
+                concert!.rating = ratingControl.rating
                 ad.saveContext()
             } catch {
                 let error = error as NSError

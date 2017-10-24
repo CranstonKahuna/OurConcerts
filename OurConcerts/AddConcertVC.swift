@@ -16,6 +16,8 @@ class AddConcertVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var bandShortNameLbl: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var ratingControl: RatingControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -31,7 +33,7 @@ class AddConcertVC: UIViewController, UITextFieldDelegate {
     @IBAction func saveBtnPressed(_ sender: Any) {
         let bsn = bandShortNameLbl!.text
         let date = dbDateFormat.date2DBDateStr(date: datePicker.date)
-        if addConcert(bsName: bsn, date: date, view:self) {
+        if addConcert(bsName: bsn, date: date, rating: ratingControl.rating, view:self) {
             let cdate = dbDateFormat.dbDateStr2Date(date: date)
             let dF = DateFormatter()
             dF.dateStyle = .long

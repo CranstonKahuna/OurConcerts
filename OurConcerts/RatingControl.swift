@@ -13,7 +13,11 @@ import UIKit
     // MARK: Properties
     private var ratingButtons = [UIButton]()
     
-    var rating = 0
+    var rating: Int16  = 0 {
+        didSet {
+            updateButtonSelectionStates()
+        }
+    }
     
     @IBInspectable var editable: Bool = true
 
@@ -33,13 +37,16 @@ import UIKit
     
     private func setupButtons() {
         print("setupButtons")
+        // Load Button Images
+        let bundle = Bundle(for: type(of: self))
+        let filledStar = UIImage(named: "filledStar", in: bundle, compatibleWith: self.traitCollection)
+        let emptyStar = UIImage(named: "emptyStar", in: bundle, compatibleWith: self.traitCollection)
+        let highLightedStar = UIImage(named: "highLightedStar", in: bundle, compatibleWith: self.traitCollection)
         // Create the buttons
-        for _ in 0..<6 {
+        for btn in 0..<6 {
             let button = UIButton(type: .custom)
             button.translatesAutoresizingMaskIntoConstraints = false
-    //        button.heightAnchor.constraint(equalToConstant: 20).isActive = true
-    //        button.widthAnchor.constraint(equalToConstant: 20).isActive = true
-            
+            button.accessibilityLabel = "Set \(btn) star rating"
             button.addTarget(self, action: #selector(RatingControl.ratingButtonTapped(button:)), for: .touchUpInside)
             
             // Add the new button to the rating button array
@@ -48,28 +55,53 @@ import UIKit
         // First button is half-wide
         let halfWide = NSLayoutConstraint(item: ratingButtons[0], attribute: .width, relatedBy: .equal, toItem: ratingButtons[0], attribute: .height, multiplier: 0.5, constant: 0.0)
         ratingButtons[0].addConstraint(halfWide)
-        ratingButtons[0].backgroundColor = UIColor.white
         addArrangedSubview(ratingButtons[0])
 
         for btn in 1..<6 {
             let button = ratingButtons[btn]
-            button.backgroundColor = UIColor.red
-            let squareConstraint = NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: button, attribute: .height, multiplier: 1.0, constant: 0.0)
-           button.addConstraint(squareConstraint)
+            button.setImage(emptyStar, for: .selected)
+            button.setImage(filledStar, for: .normal)
+            button.setImage(highLightedStar, for: .highlighted)
+            button.setImage(highLightedStar, for: [.highlighted, .selected])
+            button.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+            button.contentMode = .center
+            let squareConstraint = NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: button, attribute: .height, multiplier: 1.4, constant: 0.0)
+            button.addConstraint(squareConstraint)
             // Add the new button to the stack
             addArrangedSubview(button)
-
         }
+        updateButtonSelectionStates()
     }
     
     // Mark: Button Action
     
     @objc func ratingButtonTapped(button: UIButton) {
-        print("ratingButtonTapped Button Pressed")
         if !editable {
-            print("ratingButtonTapped not editable")
            return
         }
+        guard let index = ratingButtons.index(of:button) else {
+            fatalError("The button, \(button) is not in the ratinButtons array: \(ratingButtons)")
+        }
+        // Calculate the rating of the selected button
+        rating = Int16(index)
     }
 
+    private func updateButtonSelectionStates() {
+        // If the index of a button is less than the rating, that button should be selected
+        for (index, button) in ratingButtons.enumerated() {
+            button.isSelected = index < rating + 1
+            // Calculate the value string
+            let valueString: String
+            switch (rating) {
+            case 0:
+                valueString = "No rating set."
+            case 1:
+                valueString = "1 star set."
+            default:
+                valueString = "\(rating) stars set."
+            }
+            // Assign the value string
+            button.accessibilityValue = valueString
+        }
+    }
 }

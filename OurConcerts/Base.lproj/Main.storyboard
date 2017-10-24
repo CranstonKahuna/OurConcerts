@@ -31,42 +31,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a05-oG-Hks">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a05-oG-Hks">
                                 <rect key="frame" x="16" y="0.0" width="343" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConcertCell" rowHeight="80" id="QxQ-p8-Gic" customClass="ListConcertsTableViewCell" customModule="OurConcerts" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="80"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConcertCell" rowHeight="70" id="QxQ-p8-Gic" customClass="ListConcertsTableViewCell" customModule="OurConcerts" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QxQ-p8-Gic" id="P04-Oi-Az6">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Band Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Wg-6m-oQF">
-                                                    <rect key="frame" x="8" y="44" width="327" height="21"/>
+                                                    <rect key="frame" x="8" y="14" width="327" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="Hs7-nW-CCr"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrg-Fu-g8I">
-                                                    <rect key="frame" x="8" y="15" width="327" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wpR-iz-yNt" userLabel="DateRating Stack">
+                                                    <rect key="frame" x="8" y="40" width="327" height="20"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrg-Fu-g8I">
+                                                            <rect key="frame" x="0.0" y="0.0" width="177" height="20"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2LE-um-Uhk" userLabel="RatingControl" customClass="RatingControl" customModule="OurConcerts" customModuleProvider="target">
+                                                            <rect key="frame" x="177" y="0.0" width="150" height="20"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="editable" value="NO"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="Y4L-Ri-K8N"/>
+                                                    </constraints>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="yrg-Fu-g8I" firstAttribute="leading" secondItem="P04-Oi-Az6" secondAttribute="leadingMargin" id="9gA-ky-Rfz"/>
-                                                <constraint firstItem="3Wg-6m-oQF" firstAttribute="trailing" secondItem="P04-Oi-Az6" secondAttribute="trailingMargin" id="Nx8-Nx-PJT"/>
-                                                <constraint firstItem="3Wg-6m-oQF" firstAttribute="leading" secondItem="P04-Oi-Az6" secondAttribute="leadingMargin" id="r7L-7v-Flp"/>
-                                                <constraint firstItem="yrg-Fu-g8I" firstAttribute="top" secondItem="P04-Oi-Az6" secondAttribute="topMargin" constant="7" id="tZA-yG-eFi"/>
-                                                <constraint firstItem="3Wg-6m-oQF" firstAttribute="top" secondItem="yrg-Fu-g8I" secondAttribute="bottom" constant="8" id="wwE-kP-VJF"/>
-                                                <constraint firstItem="yrg-Fu-g8I" firstAttribute="trailing" secondItem="P04-Oi-Az6" secondAttribute="trailingMargin" id="zfJ-16-PUA"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="wpR-iz-yNt" secondAttribute="trailing" id="AIN-U2-a4e"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="3Wg-6m-oQF" secondAttribute="trailing" id="Hip-fA-TPn"/>
+                                                <constraint firstItem="3Wg-6m-oQF" firstAttribute="leading" secondItem="P04-Oi-Az6" secondAttribute="leadingMargin" id="Qda-zn-kNf"/>
+                                                <constraint firstItem="wpR-iz-yNt" firstAttribute="top" secondItem="3Wg-6m-oQF" secondAttribute="bottom" constant="6" id="Ynm-sx-vSx"/>
+                                                <constraint firstItem="wpR-iz-yNt" firstAttribute="leading" secondItem="P04-Oi-Az6" secondAttribute="leadingMargin" id="boq-XC-6tr"/>
+                                                <constraint firstItem="3Wg-6m-oQF" firstAttribute="top" secondItem="P04-Oi-Az6" secondAttribute="topMargin" constant="6" id="pgi-8E-WiK"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="bandName" destination="3Wg-6m-oQF" id="NDZ-rq-CKX"/>
                                             <outlet property="dateLbl" destination="yrg-Fu-g8I" id="nIB-ZD-7a6"/>
+                                            <outlet property="ratingControl" destination="2LE-um-Uhk" id="sS1-i2-HP2"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -95,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pnY-or-FZk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1200" y="-443.47826086956525"/>
+            <point key="canvasLocation" x="1199.2" y="-443.92803598200902"/>
         </scene>
         <!--Edit My Concert-->
         <scene sceneID="aqa-tM-F9S">
@@ -127,10 +145,10 @@
                                 <rect key="frame" x="0.0" y="56" width="375" height="454"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="p5W-zZ-V3g" userLabel="Edit Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="439.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="482.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Band/Artist Name" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZU-kQ-2UB">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                                <rect key="frame" x="12.5" y="0.0" width="375" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="4f9-MN-rC1"/>
                                                 </constraints>
@@ -139,7 +157,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Band/Artist Name (short name)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="F6o-OC-arV">
-                                                <rect key="frame" x="76.5" y="48" width="222.5" height="40"/>
+                                                <rect key="frame" x="89" y="48" width="222.5" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="FSz-Px-BEh"/>
                                                 </constraints>
@@ -148,13 +166,13 @@
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hkt-BB-bNj">
-                                                <rect key="frame" x="168.5" y="106" width="38" height="22.5"/>
+                                                <rect key="frame" x="181" y="106" width="38" height="22.5"/>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="okR-a6-mBe">
-                                                <rect key="frame" x="27.5" y="146.5" width="320" height="200"/>
+                                                <rect key="frame" x="40" y="146.5" width="320" height="200"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="Otv-Vq-LHG"/>
                                                 </constraints>
@@ -162,8 +180,14 @@
                                                     <!--2017-08-10 03:48:33 +0000-->
                                                 </date>
                                             </datePicker>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KtL-iv-3aZ" userLabel="RatingControl" customClass="RatingControl" customModule="OurConcerts" customModuleProvider="target">
+                                                <rect key="frame" x="106.5" y="364.5" width="187.5" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="7w1-3q-cxH"/>
+                                                </constraints>
+                                            </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y29-mK-6P6">
-                                                <rect key="frame" x="162.5" y="364.5" width="50" height="75"/>
+                                                <rect key="frame" x="175" y="407.5" width="50" height="75"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="y29-mK-6P6" secondAttribute="height" multiplier="1:1.5" id="fUd-Ju-Vtp"/>
                                                     <constraint firstAttribute="width" constant="50" id="faM-Ia-xg0"/>
@@ -184,6 +208,10 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="okR-a6-mBe" firstAttribute="leading" secondItem="p5W-zZ-V3g" secondAttribute="leading" constant="40" id="HG8-Ef-s4C"/>
+                                            <constraint firstAttribute="trailing" secondItem="okR-a6-mBe" secondAttribute="trailing" constant="40" id="TE9-aB-9If"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -212,6 +240,7 @@
                     <connections>
                         <outlet property="bandShortNameLbl" destination="F6o-OC-arV" id="Iwb-lB-vIt"/>
                         <outlet property="datePicker" destination="okR-a6-mBe" id="lmC-aT-LUX"/>
+                        <outlet property="ratingControl" destination="KtL-iv-3aZ" id="S7l-GF-hVH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8R-DE-CpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -444,6 +473,7 @@
                     <connections>
                         <outlet property="bandShortNameLbl" destination="GYM-4k-2oO" id="x8F-g8-i6I"/>
                         <outlet property="datePicker" destination="765-ia-was" id="paB-9Y-7gJ"/>
+                        <outlet property="ratingControl" destination="RYA-YL-vXq" id="zCh-ph-uYw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8k6-99-bae" userLabel="First Responder" sceneMemberID="firstResponder"/>

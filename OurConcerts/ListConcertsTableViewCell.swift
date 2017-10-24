@@ -14,7 +14,8 @@ class ListConcertsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var bandName: UILabel!
-
+    @IBOutlet weak var ratingControl: RatingControl!
+    
     func configureCell(concert: Concerts)  {
         //update cell
         var cdate = dbDateFormat.dbDateStr2Date(date: concert.date!)
@@ -26,5 +27,11 @@ class ListConcertsTableViewCell: UITableViewCell {
         
         dateLbl.text = _dateFormatter.string(from: cdate!)
         bandName.text = concert.toBandShortName?.bandShortName
+        let rating = concert.rating
+        if rating >= 0 && rating < 6 {
+            ratingControl.rating = concert.rating
+        } else {
+            ratingControl.rating = 0
+        }
     }
 }

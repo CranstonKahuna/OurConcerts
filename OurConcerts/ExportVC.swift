@@ -93,7 +93,7 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentPickerDelegate 
                 } else {
                     first = false
                 }
-                exportString.append("{ \"Date\": \"\(concert.date!)\", \"BSName\": \"\(shortName)\" }")
+                exportString.append("{ \"Date\": \"\(concert.date!)\", \"BSName\": \"\(shortName)\", \"rating\": \"\(concert.rating)\" }")
             }
             exportString.append(jtail)
             try exportString.write(toFile: toFile, atomically: true, encoding: .utf8)

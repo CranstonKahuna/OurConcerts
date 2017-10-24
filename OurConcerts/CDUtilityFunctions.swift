@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 import UIKit
 
-func addConcert (bsName: String?, date: String, view: UIViewController) -> Bool {
+func addConcert (bsName: String?, date: String, rating: Int16, view: UIViewController) -> Bool {
     if bsName == nil {
         infoAlert(title: "No band name", message: "Cannot add the concert", view: view)
         return false
@@ -30,6 +30,7 @@ func addConcert (bsName: String?, date: String, view: UIViewController) -> Bool 
         let concert = Concerts(context: context)
         concert.date = date
         concert.toBandShortName = bsn
+        concert.rating = rating
         ad.saveContext()
     } catch {
         let error = error as NSError

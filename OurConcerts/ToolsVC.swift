@@ -79,8 +79,14 @@ class ToolsVC: UIViewController, UIDocumentPickerDelegate, UINavigationControlle
         var conCount = 0
         for concert in concerts {
             if let c = concert as? [String: String] {
+                var rating: Int16 = 0
                 if let bsName = c["BSName"], let date = c["Date"] {
-                    if addConcert(bsName: bsName, date: date, view: self) {
+                    if let r1 = c["rating"], let r = Int16(r1) {
+                         if r >= 0 && r < 6 {
+                            rating = r
+                        }
+                    }
+                    if addConcert(bsName: bsName, date: date, rating: rating, view: self) {
                         conCount += 1
                     }
                 } else {
