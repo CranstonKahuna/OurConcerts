@@ -15,13 +15,11 @@ class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var controller: NSFetchedResultsController<Concerts>!
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Do any additional setup after loading the view.
 //        generateTestData()
         attemptFetch()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,7 +27,6 @@ class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelega
         // Dispose of any resources that can be recreated.
     }
     
-
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -63,9 +60,7 @@ class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cellIdentifier = "ConcertCell"
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ListConcertsTableViewCell
         configureCell(cell: cell, indexPath: indexPath as NSIndexPath)
         return cell
@@ -89,12 +84,11 @@ class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelega
         return [editAction]
     }
 
-    
     // MARK: Core Data Support
     
     func attemptFetch() {
         let fetchRequest: NSFetchRequest<Concerts> = Concerts.fetchRequest()
-        let dateSort = NSSortDescriptor(key: "date", ascending: true)
+        let dateSort = NSSortDescriptor(key: "date", ascending: false)
         fetchRequest.sortDescriptors = [dateSort]
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         self.controller = controller
@@ -147,20 +141,20 @@ class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelega
     func generateTestData() {
         let concert = Concerts(context: context)
         concert.date = dbDateFormat.date2DBDateStr(date: Date())
+        concert.rating = 3
         let bsn = BandShortName(context: context)
         bsn.bandShortName = "sci"
         concert.toBandShortName = bsn
-        
         var someDateTime = "2016/10/08"
-        
         let concert2 = Concerts(context: context)
         concert2.date = someDateTime
         concert2.toBandShortName = bsn
-        
+        concert.rating = 2
         someDateTime = "2017/12/31"
         let concert3 = Concerts(context: context)
         concert3.date = someDateTime
         concert3.toBandShortName = bsn
+        concert.rating = 4
         ad.saveContext()
     }
 
