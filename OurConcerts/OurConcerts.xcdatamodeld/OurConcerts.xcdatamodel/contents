@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13241" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="BandShortName" representedClassName="BandShortName" syncable="YES" codeGenerationType="class">
-        <attribute name="bandShortName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bandShortName" attributeType="String" syncable="YES"/>
         <relationship name="toConcerts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Concerts" inverseName="toBandShortName" inverseEntity="Concerts" syncable="YES"/>
     </entity>
     <entity name="Concerts" representedClassName="Concerts" syncable="YES" codeGenerationType="class">
         <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" attributeType="String" syncable="YES"/>
         <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="toBandShortName" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BandShortName" inverseName="toConcerts" inverseEntity="BandShortName" syncable="YES"/>
+        <relationship name="toBandShortName" maxCount="1" deletionRule="Nullify" destinationEntity="BandShortName" inverseName="toConcerts" inverseEntity="BandShortName" syncable="YES"/>
     </entity>
     <elements>
         <element name="BandShortName" positionX="-18" positionY="45" width="128" height="75"/>
