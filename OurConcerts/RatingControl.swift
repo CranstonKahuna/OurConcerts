@@ -36,7 +36,6 @@ import UIKit
     // MARK: Private Methods
     
     private func setupButtons() {
-        print("setupButtons")
         // Load Button Images
         let bundle = Bundle(for: type(of: self))
         let filledStar = UIImage(named: "filledStar", in: bundle, compatibleWith: self.traitCollection)
