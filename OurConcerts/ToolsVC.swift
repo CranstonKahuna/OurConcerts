@@ -78,22 +78,27 @@ class ToolsVC: UIViewController, UIDocumentPickerDelegate, UINavigationControlle
             return
         }
         var conCount = 0
+        var errCount = 0
         var alertCount = 0
         let alertMax = 4
         for concert in concerts {
             if let c = concert as? [String: String] {
                 var rating: Int16 = 0
-                if let bsName = c["BSName"], let date = c["Date"] {
+                if let bsName: String = c["BSName"], let date = c["Date"] {
                     if let r1 = c["rating"], let r = Int16(r1) {
                          if r >= 0 && r < 6 {
                             rating = r
                         }
                     }
-                    if addConcert(bsName: bsName, date: date, rating: rating, view: self) {
+                    do {
+                        try addConcert(bsName: bsName, date: date, rating: rating)
                         conCount += 1
+                    } catch {
+                        errCount += 1
                     }
                 } else {
                     alertCount += 1
+                    errCount += 1
                     let alertController: UIAlertController
                     if alertCount < alertMax {
                         alertController = UIAlertController(title: "No BSName or Date in \(c): Skipping", message: nil, preferredStyle: UIAlertControllerStyle.alert)
@@ -104,6 +109,10 @@ class ToolsVC: UIViewController, UIDocumentPickerDelegate, UINavigationControlle
                     }
                 }
             }
+        }
+        if errCount > 0 {
+            let alertController = UIAlertController(title: "\(errCount) concerts not added due to errors", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+            _alerts.append(alertController)
         }
         let alertController = UIAlertController(title: "\(conCount) concerts added", message: nil, preferredStyle: UIAlertControllerStyle.alert)
         _alerts.append(alertController)

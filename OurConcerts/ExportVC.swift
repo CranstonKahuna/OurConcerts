@@ -80,7 +80,9 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentPickerDelegate 
         return true
     }
     
+    var numberExported: Int = 0
     func writeJsonConcerts(concerts: [Concerts], toFile: String) {
+        numberExported = 0
         let jheader: String = "{ \"concerts\": [ "
         let jtail: String = "\n]\n}"
         do {
@@ -94,6 +96,7 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentPickerDelegate 
                     first = false
                 }
                 exportString.append("{ \"Date\": \"\(concert.date!)\", \"BSName\": \"\(shortName)\", \"rating\": \"\(concert.rating)\" }")
+                numberExported += 1
             }
             exportString.append(jtail)
             try exportString.write(toFile: toFile, atomically: true, encoding: .utf8)
@@ -105,7 +108,8 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentPickerDelegate 
     @available(iOS 8.0, *)
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         let filename = url.lastPathComponent
-        infoAlert(title: "Concerts Exported to \(filename)", message: nil, view: self)
+//        self.navigationController?.popViewController(animated: true)
+        infoAlert(title: "\(numberExported) Concerts Exported to \(filename)", message: nil, view: self)
         deleteTmpFile()
     }
     

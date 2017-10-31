@@ -67,23 +67,15 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
     // MARK: Button Actions
 
     @IBAction func saveBtnPressed(_ sender: Any) {
-        if let bandShortName = bandShortNameLbl.text?.trimmingCharacters(in: .whitespacesAndNewlines) {
-            if bandShortName == "" {
-                infoAlert(title: "Blank band name", message: "Cannot add the concert", view: self)
-                return
-            }
-            do {
-                let bsn = try fetchBSN(sn: bandShortName)
-                concert!.date = dbDateFormat.date2DBDateStr(date: datePicker.date)
-                concert!.toBandShortName = bsn
-                concert!.rating = ratingControl.rating
-                ad.saveContext()
-            } catch {
-                let error = error as NSError
-                fatalError("Failed to fetch bandShortName from edit: \(error)")
-            }
-        navigationController?.popViewController(animated: true)
+        let bsn = fetchBSNWithAlerts(sn: bandShortNameLbl.text, view: self)
+        if bsn == nil {
+            return
         }
+        concert!.date = dbDateFormat.date2DBDateStr(date: datePicker.date)
+        concert!.toBandShortName = bsn
+        concert!.rating = ratingControl.rating
+        ad.saveContext()
+        navigationController?.popViewController(animated: true)
     }
     @IBAction func deleteBtnPressed(_ sender: Any) {
         if concert != nil {
