@@ -90,12 +90,11 @@ func fetchBSN(sn: String?) throws -> BandShortName {
     }
     
     let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "BandShortName")
-    fetchRequest.predicate = NSPredicate(format: "bandShortName == %@", bandShortName)
+    fetchRequest.predicate = NSPredicate(format: "bandShortName == [c] %@", bandShortName)
     let rbsn:BandShortName
     let fetchedBSN = try context.fetch(fetchRequest as! NSFetchRequest<NSFetchRequestResult>) as! [BandShortName]
     if fetchedBSN.count > 0 {
         rbsn = fetchedBSN[0]
-        
     } else {
         rbsn = BandShortName(context: context)
         rbsn.bandShortName = bandShortName
