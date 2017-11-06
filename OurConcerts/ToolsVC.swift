@@ -79,6 +79,7 @@ class ToolsVC: UIViewController, UIDocumentPickerDelegate, UINavigationControlle
         }
         var conCount = 0
         var errCount = 0
+        var dupCount = 0
         var alertCount = 0
         let alertMax = 4
         for concert in concerts {
@@ -93,8 +94,15 @@ class ToolsVC: UIViewController, UIDocumentPickerDelegate, UINavigationControlle
                     do {
                         try addConcert(bsName: bsName, date: date, rating: rating)
                         conCount += 1
+                    } catch let error as addConcertErrors {
+                        switch error {
+                        case .duplicateConcert:
+                            dupCount += 1
+                        default:
+                            errCount += 1
+                        }
                     } catch {
-                        errCount += 1
+                            errCount += 1
                     }
                 } else {
                     alertCount += 1
@@ -112,6 +120,10 @@ class ToolsVC: UIViewController, UIDocumentPickerDelegate, UINavigationControlle
         }
         if errCount > 0 {
             let alertController = UIAlertController(title: "\(errCount) concerts not added due to errors", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+            _alerts.append(alertController)
+        }
+        if dupCount > 0 {
+            let alertController = UIAlertController(title: "\(dupCount) duplicate concerts not added", message: nil, preferredStyle: UIAlertControllerStyle.alert)
             _alerts.append(alertController)
         }
         let alertController = UIAlertController(title: "\(conCount) concerts added", message: nil, preferredStyle: UIAlertControllerStyle.alert)

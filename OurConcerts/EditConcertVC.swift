@@ -54,29 +54,65 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-/*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
- */
-    
     // MARK: Button Actions
 
     @IBAction func saveBtnPressed(_ sender: Any) {
-        let bsn = fetchBSNWithAlerts(sn: bandShortNameLbl.text, view: self)
+        let newDate = dbDateFormat.date2DBDateStr(date: datePicker.date)
+        let newSN = stringToBSNWithAlerts(bandShortNameLbl.text, view: self)
+        if newSN == nil {
+            return
+        }
+        // Has the user changed the band or the date?
+        var bsn: BandShortName? = nil
+        if newSN!.lowercased() != concert!.toBandShortName?.bandShortName?.lowercased()
+           || newDate != concert!.date {
+            // check if this is now a duplicate of an existing entry
+            do {
+                bsn = try bsnExists(newSN!)
+                if bsn != nil {
+                    let oldConcert = try fetchThisConcert(date: newDate, bsn: bsn!)
+                    if oldConcert != nil {
+                        let alertC = UIAlertController(title: "Duplicate Concert", message: "You already entered this concert", preferredStyle: UIAlertControllerStyle.alert)
+                        alertC.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+                        alertC.addAction(UIAlertAction(title: "Replace Existing", style: UIAlertActionStyle.default) { alertC in
+                            oldConcert!.rating = self.ratingControl.rating
+                            if self.concert != nil {
+                                context.delete(self.concert!)
+                            }
+                            ad.saveContext()
+                            self.navigationController?.popViewController(animated: true)
+                        })
+                        alertC.addAction(UIAlertAction(title: "Add Duplicate", style: UIAlertActionStyle.default) { alertC in
+                            self.concert!.date = newDate
+                            self.concert!.toBandShortName = bsn
+                            self.concert!.rating = self.ratingControl.rating
+                            ad.saveContext()
+                            self.navigationController?.popViewController(animated: true)
+
+                        })
+                        self.present(alertC, animated: true, completion: nil)
+                        return
+                    }
+                }
+            } catch {
+                infoAlert(title: "Edit error", message: "\(error)", view: self)
+            }
+        }
+        
+        if bsn == nil {
+            bsn = fetchBSNWithAlerts(newSN, view: self)
+        }
+        // if bsn is still nil, something terrible has happened.
         if bsn == nil {
             return
         }
-        concert!.date = dbDateFormat.date2DBDateStr(date: datePicker.date)
+        concert!.date = newDate
         concert!.toBandShortName = bsn
         concert!.rating = ratingControl.rating
         ad.saveContext()
         navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func deleteBtnPressed(_ sender: Any) {
         if concert != nil {
             context.delete(concert!)

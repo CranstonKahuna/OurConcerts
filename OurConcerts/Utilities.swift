@@ -39,7 +39,7 @@ class DBDateFormat {
 }
 
 // Displays a simple "OK" alert and pops the current view
-func infoAlert(title: String?, message: String?, view: UIViewController) {
+func infoAlert(title: String?, message: String?, view: UIViewController, completion: (() -> Void)? = nil) {
     let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
     alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,
                                             handler: {(alert: UIAlertAction!) in view.navigationController?.popViewController(animated: true)}))

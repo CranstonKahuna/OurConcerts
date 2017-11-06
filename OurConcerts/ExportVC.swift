@@ -57,7 +57,14 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentPickerDelegate 
             }
 
             tpath = NSString(string: tmpDir).appendingPathComponent(fname)
-            let concerts = fetchConcerts()
+            let concerts: [Concerts]
+            do {
+                concerts = try fetchConcerts()
+            } catch {
+                let error = error as NSError
+                infoAlert(title: "Failed to fetch concerts", message: "\(error)", view: self)
+                return true
+            }
             if concerts.count == 0 {
                 // No concerts fetched: Display alert
                 infoAlert(title: "No concerts to export", message: nil, view: self)
@@ -109,24 +116,29 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentPickerDelegate 
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         let filename = url.lastPathComponent
 //        self.navigationController?.popViewController(animated: true)
-        infoAlert(title: "\(numberExported) Concerts Exported to \(filename)", message: nil, view: self)
-        deleteTmpFile()
+        infoAlert(title: "\(numberExported) Concerts Exported to \(filename)", message: nil, view: self) {
+            do {
+                try self.deleteTmpFile()
+            } catch {
+                let error = error as NSError
+                infoAlert(title: "Failed to delete temporary file", message: "\(error)", view: self)
+            }
+        }
     }
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        do {
+            try deleteTmpFile()
+        } catch {
+            let error = error as NSError
+            infoAlert(title: "Failed to delete temporary file", message: "\(error)", view: self)
+        }
         dismiss(animated: true, completion: nil)
         self.fileNameLbl.becomeFirstResponder()
-        deleteTmpFile()
     }
     
-    func deleteTmpFile() {
-        do {
-            try fileManager.removeItem(atPath: tpath as String)
-        } catch {
-            print("Failed to delete file")
-            let error = error as NSError
-            print("\(error)")
-        }
+    func deleteTmpFile() throws {
+        try fileManager.removeItem(atPath: tpath as String)
     }
 
 }
