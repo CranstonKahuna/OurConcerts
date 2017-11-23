@@ -18,14 +18,14 @@ class ListConcertsTableViewCell: UITableViewCell {
     
     func configureCell(concert: Concerts)  {
         //update cell
-        var cdate = dbDateFormat.dbDateStr2Date(date: concert.date!)
-        if cdate == nil {
-            cdate = Date()
+        var cDate = ConcertDate(concert.date!)
+        if cDate == nil {
+            cDate = ConcertDate(Date())
         }
         _dateFormatter.dateStyle = .long
         _dateFormatter.timeStyle = .none
         
-        dateLbl.text = _dateFormatter.string(from: cdate!)
+        dateLbl.text = _dateFormatter.string(from: cDate!.concertDate)
         bandName.text = concert.toBandShortName?.bandShortName
         let rating = concert.rating
         if rating >= 0 && rating < 6 {

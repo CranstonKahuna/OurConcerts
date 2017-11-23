@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3415D9361F6A4E44004935F1 /* ExportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415D9351F6A4E44004935F1 /* ExportVC.swift */; };
+		3440EF921FC6488D00AFE41C /* ConcertDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3440EF911FC6488D00AFE41C /* ConcertDate.swift */; };
 		347527511F58D1F000BC3C1E /* ToolsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347527501F58D1F000BC3C1E /* ToolsVC.swift */; };
 		347E48BB1F70C267006C91A1 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347E48BA1F70C267006C91A1 /* Utilities.swift */; };
 		3483FE641F42734B000759A3 /* CDUtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3483FE631F42734B000759A3 /* CDUtilityFunctions.swift */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		3415D9341F635091004935F1 /* OurConcerts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OurConcerts.entitlements; sourceTree = "<group>"; };
 		3415D9351F6A4E44004935F1 /* ExportVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportVC.swift; sourceTree = "<group>"; };
+		3440EF911FC6488D00AFE41C /* ConcertDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcertDate.swift; sourceTree = "<group>"; };
 		347527501F58D1F000BC3C1E /* ToolsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolsVC.swift; sourceTree = "<group>"; };
 		347E48BA1F70C267006C91A1 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		3483FE631F42734B000759A3 /* CDUtilityFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDUtilityFunctions.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				3483FE631F42734B000759A3 /* CDUtilityFunctions.swift */,
+				3440EF911FC6488D00AFE41C /* ConcertDate.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				348703451F3BFBB6002BF779 /* OurConcerts.xcdatamodeld in Sources */,
 				348703731F3C7471002BF779 /* ListConcertsTableViewCell.swift in Sources */,
 				3487033D1F3BFBB6002BF779 /* AppDelegate.swift in Sources */,
+				3440EF921FC6488D00AFE41C /* ConcertDate.swift in Sources */,
 				3415D9361F6A4E44004935F1 /* ExportVC.swift in Sources */,
 				347E48BB1F70C267006C91A1 /* Utilities.swift in Sources */,
 				3487037C1F3EB958002BF779 /* EditConcertVC.swift in Sources */,
