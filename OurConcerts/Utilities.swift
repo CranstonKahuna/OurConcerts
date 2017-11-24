@@ -9,35 +9,6 @@
 import Foundation
 import UIKit
 
-let dbDateFormat = DBDateFormat()
-
-class DBDateFormat {
-    
-    private let _dateStringFormat = "yyyy/MM/dd"
-    private let _dateFormatter = DateFormatter()
-    
-    var dateStringFormat: String {
-        get {
-            return _dateStringFormat
-        }
-    }
-
-    init() {
-        _dateFormatter.dateFormat = _dateStringFormat
-    }
-
-    // String to Date
-    // returns nil if the string cannot be parsed
-    func dbDateStr2Date(date: String) -> Date? {
-        return _dateFormatter.date(from: date)
-    }
-    
-    // Date to String
-    func date2DBDateStr(date: Date) -> String {
-        return _dateFormatter.string(from: date)
-    }
-}
-
 // Displays a simple "OK" alert and pops the current view
 func infoAlert(title: String?, message: String?, view: UIViewController, completion: (() -> Void)? = nil) {
     let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)

@@ -22,11 +22,11 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
         datePicker.setValue(UIColor.white, forKey: "textColor")
 
         if concert != nil  {
-            var dbDate = dbDateFormat.dbDateStr2Date(date: concert!.date!)
-            if dbDate == nil {
-                dbDate = Date()
+            var cDate = ConcertDate(concert!.date!)
+            if cDate == nil {
+                cDate = ConcertDate(Date())
             }
-            datePicker.date = dbDate!
+            datePicker.date = cDate!.concertDate
             let shortName = concert?.toBandShortName?.bandShortName
             if shortName == nil {
                 bandShortNameLbl.text = "Unknown"
@@ -57,7 +57,8 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
     // MARK: Button Actions
 
     @IBAction func saveBtnPressed(_ sender: Any) {
-        let newDate = dbDateFormat.date2DBDateStr(date: datePicker.date)
+        let newCDate = ConcertDate(datePicker.date)
+//        let newDate = dbDateFormat.date2DBDateStr(date: datePicker.date)
         let newSN = stringToBSNWithAlerts(bandShortNameLbl.text, view: self)
         if newSN == nil {
             return
@@ -65,12 +66,12 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
         // Has the user changed the band or the date?
         var bsn: BandShortName? = nil
         if newSN!.lowercased() != concert!.toBandShortName?.bandShortName?.lowercased()
-           || newDate != concert!.date {
+           || newCDate.concertDateString != concert!.date {
             // check if this is now a duplicate of an existing entry
             do {
                 bsn = try bsnExists(newSN!)
                 if bsn != nil {
-                    let oldConcert = try fetchThisConcert(date: newDate, bsn: bsn!)
+                    let oldConcert = try fetchThisConcert(cDate: newCDate, bsn: bsn!)
                     if oldConcert != nil {
                         let alertC = UIAlertController(title: "Duplicate Concert", message: "You already entered this concert", preferredStyle: UIAlertControllerStyle.alert)
                         alertC.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
@@ -83,7 +84,7 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
                             self.navigationController?.popViewController(animated: true)
                         })
                         alertC.addAction(UIAlertAction(title: "Add Duplicate", style: UIAlertActionStyle.default) { alertC in
-                            self.concert!.date = newDate
+                            self.concert!.date = newCDate.concertDateString
                             self.concert!.toBandShortName = bsn
                             self.concert!.rating = self.ratingControl.rating
                             ad.saveContext()
@@ -106,7 +107,7 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
         if bsn == nil {
             return
         }
-        concert!.date = newDate
+        concert!.date = newCDate.concertDateString
         concert!.toBandShortName = bsn
         concert!.rating = ratingControl.rating
         ad.saveContext()

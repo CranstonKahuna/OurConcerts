@@ -33,7 +33,7 @@ class AddConcertVC: UIViewController, UITextFieldDelegate {
     @IBAction func saveBtnPressed(_ sender: Any) {
         let bsn = bandShortNameLbl!.text
         let cDate = ConcertDate(datePicker.date)
-        if addConcertWithAlerts(bsName: bsn, date: cDate.concertDateString, rating: ratingControl.rating, view:self) {
+        if addConcertWithAlerts(bsName: bsn, cDate: cDate, rating: ratingControl.rating, view:self) {
             let dF = DateFormatter()
             dF.dateStyle = .long
             dF.timeStyle = .none

@@ -11,24 +11,21 @@ import Foundation
 import CoreData
 import UIKit
 
-func addConcertWithAlerts (bsName: String?, date: String, rating: Int16, view: UIViewController) -> Bool {
+func addConcertWithAlerts (bsName: String?, cDate: ConcertDate, rating: Int16, view: UIViewController) -> Bool {
     let bsn = fetchBSNWithAlerts(bsName, view: view)
     if bsn == nil {
         return false
     }
     do {
-        try addConcert(bsn: bsn!, date: date, rating: rating)
+        try addConcert(bsn: bsn!, cDate: cDate, rating: rating)
     } catch let error as addConcertErrors {
         switch (error) {
-        case .unrecognizedDate:
-            infoAlert(title: "Unrecognized Date: \(date)", message: "Cannot add the concert", view: view)
-            return false
         case .duplicateConcert:
             let alertC = UIAlertController(title: "Duplicate Concert", message: "You already entered this concert", preferredStyle: UIAlertControllerStyle.alert)
             alertC.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
             alertC.addAction(UIAlertAction(title: "Add it anyway", style: UIAlertActionStyle.default) { alertC in
                 do {
-                    try addConcert(bsn: bsn!, date: date, rating: rating, force: true)
+                    try addConcert(bsn: bsn!, cDate: cDate, rating: rating, force: true)
                 } catch let error as NSError {
                     infoAlert(title: "Error adding concert", message: "Error \(error)", view: view)
                 }
@@ -42,30 +39,26 @@ func addConcertWithAlerts (bsName: String?, date: String, rating: Int16, view: U
     return true
 }
 
-func addConcert(bsName: String?, date: String, rating: Int16) throws {
+func addConcert(bsName: String?, cDate: ConcertDate, rating: Int16) throws {
     let sn = try stringToBSN(bsName)
     let bsn = try fetchBSN(sn!)
-    try addConcert(bsn: bsn, date: date, rating: rating)
+    try addConcert(bsn: bsn, cDate: cDate, rating: rating)
 }
 
 enum addConcertErrors: Error {
-    case unrecognizedDate
     case duplicateConcert
 }
 
 // Overloaded function: This one takes an already fetched BandShortName
-func addConcert(bsn: BandShortName, date: String, rating: Int16, force: Bool = false) throws {
-     if dbDateFormat.dbDateStr2Date(date: date) == nil {
-        throw addConcertErrors.unrecognizedDate
-    }
+func addConcert(bsn: BandShortName, cDate: ConcertDate, rating: Int16, force: Bool = false) throws {
     if !force {
-        let dup = try fetchThisConcert(date: date, bsn: bsn)
+        let dup = try fetchThisConcert(cDate: cDate, bsn: bsn)
         if dup != nil {
             throw addConcertErrors.duplicateConcert
         }
     }
     let concert = Concerts(context: context)
-    concert.date = date
+    concert.date = cDate.concertDateString
     concert.toBandShortName = bsn
     concert.rating = rating
     ad.saveContext()
@@ -119,9 +112,9 @@ func fetchConcerts() throws -> [Concerts] {
 
 // Fetch a particular concert (date and shortname)
 
-func fetchThisConcert(date: String, bsn: BandShortName) throws -> Concerts? {
+func fetchThisConcert(cDate: ConcertDate, bsn: BandShortName) throws -> Concerts? {
     let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Concerts")
-    fetchRequest.predicate = NSPredicate(format: "date == %@ and toBandShortName.bandShortName == %@", date, bsn.bandShortName!)
+    fetchRequest.predicate = NSPredicate(format: "date == %@ and toBandShortName.bandShortName == %@", cDate.concertDateString, bsn.bandShortName!)
     let fetchedConcerts = try context.fetch(fetchRequest as! NSFetchRequest<NSFetchRequestResult>) as! [Concerts]
     if fetchedConcerts.count > 0 {
         return fetchedConcerts[0]

@@ -91,15 +91,18 @@ class ToolsVC: UIViewController, UIDocumentPickerDelegate, UINavigationControlle
                             rating = r
                         }
                     }
+                    let cDate = ConcertDate(date)
+                    if cDate == nil {
+                        errCount += 1
+                        continue
+                    }
                     do {
-                        try addConcert(bsName: bsName, date: date, rating: rating)
+                        try addConcert(bsName: bsName, cDate: cDate!, rating: rating)
                         conCount += 1
                     } catch let error as addConcertErrors {
                         switch error {
                         case .duplicateConcert:
                             dupCount += 1
-                        default:
-                            errCount += 1
                         }
                     } catch {
                             errCount += 1

@@ -140,7 +140,7 @@ class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelega
 
     func generateTestData() {
         let concert = Concerts(context: context)
-        concert.date = dbDateFormat.date2DBDateStr(date: Date())
+        concert.date = ConcertDate(Date()).concertDateString
         concert.rating = 3
         let bsn = BandShortName(context: context)
         bsn.bandShortName = "sci"
