@@ -65,23 +65,22 @@ class ToolsVC: UIViewController, UIDocumentPickerDelegate, UINavigationControlle
         do {
             json = try JSONSerialization.jsonObject(with: jsonData, options: [])
         } catch {
-            infoAlert(title: "Cannot parse file \(fn) as json", message: "\(String(describing: jsonString))", view: self)
+            infoAlert(title: "Cannot parse file \(fn) as json", message: "\(String(describing: jsonString!))", view: self)
             return
         }
         // NOTE: I could not come up with a test that would parse but fail this check
         guard let dictionary = json as? [String: Any] else {
-            infoAlert(title: "Outermost json of \(fn) not a dictionary", message: "\(String(describing: jsonString))", view: self)
+            infoAlert(title: "Outermost json of \(fn) not a dictionary", message: "\(String(describing: jsonString!))", view: self)
             return
         }
         guard let concerts = dictionary["concerts"] as? [Any] else {
-            infoAlert(title: "No \"concerts\" element in json of \(fn)", message: "\(String(describing: jsonString))", view: self)
+            infoAlert(title: "No \"concerts\" element in json of \(fn)", message: "\(String(describing: jsonString!))", view: self)
             return
         }
+        let alertQ = AlertQueue(alertMax: 4, view: self)
         var conCount = 0
         var errCount = 0
         var dupCount = 0
-        var alertCount = 0
-        let alertMax = 4
         for concert in concerts {
             if let c = concert as? [String: String] {
                 var rating: Int16 = 0
@@ -94,6 +93,7 @@ class ToolsVC: UIViewController, UIDocumentPickerDelegate, UINavigationControlle
                     let cDate = ConcertDate(date)
                     if cDate == nil {
                         errCount += 1
+                        alertQ.addErrorAlert("Bad date string \(date): Expected YYYY/MM/DD")
                         continue
                     }
                     do {
@@ -104,63 +104,86 @@ class ToolsVC: UIViewController, UIDocumentPickerDelegate, UINavigationControlle
                         case .duplicateConcert:
                             dupCount += 1
                         }
-                    } catch {
-                            errCount += 1
+                    } catch _ as bsnErrors {
+                        errCount += 1
+                        alertQ.addErrorAlert("Bad band name \(bsName)")
+                     } catch {
+                        errCount += 1
                     }
                 } else {
-                    alertCount += 1
                     errCount += 1
-                    let alertController: UIAlertController
-                    if alertCount < alertMax {
-                        alertController = UIAlertController(title: "No BSName or Date in \(c): Skipping", message: nil, preferredStyle: UIAlertControllerStyle.alert)
-                        _alerts.append(alertController)
-                    } else if alertCount == alertMax {
-                        alertController = UIAlertController(title: "No BSName or Date in \(c): Quietly skipping remaining bad entries", message: nil, preferredStyle: UIAlertControllerStyle.alert)
-                        _alerts.append(alertController)
-                    }
-                }
+                    alertQ.addErrorAlert("No BSName or Date in \(c)")
+                 }
             }
         }
         if errCount > 0 {
-            let alertController = UIAlertController(title: "\(errCount) concerts not added due to errors", message: nil, preferredStyle: UIAlertControllerStyle.alert)
-            _alerts.append(alertController)
+            alertQ.addInfoAlert("\(errCount) concerts not added due to errors")
         }
         if dupCount > 0 {
-            let alertController = UIAlertController(title: "\(dupCount) duplicate concerts not added", message: nil, preferredStyle: UIAlertControllerStyle.alert)
-            _alerts.append(alertController)
+            alertQ.addInfoAlert("\(dupCount) duplicate concerts not added")
         }
-        let alertController = UIAlertController(title: "\(conCount) concerts added", message: nil, preferredStyle: UIAlertControllerStyle.alert)
-        _alerts.append(alertController)
-        displayAlerts()
+        alertQ.addInfoAlert("\(conCount) concerts added")
+        alertQ.displayAlerts()
     }
 
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         dismiss(animated: true, completion: nil)
     }
+}
+
+
+// Display a list of "OK" alerts sequentially
+//
+// "_alerts" is where the alerts are gathered
+// The alerts will be displayed in the order of the _alerts array
+
+
+class AlertQueue {
     
-    // Display a list of "OK" alerts sequentially
-    //
-    // "alerts" is where the alerts are gathered
-    // The alerts will be displayed in the order of the array
     private var _alerts = [UIAlertController]()
+    private let _alertMax: Int
+    private var _alertCount = 0
+    private let _view: UIViewController
+    
+    init(alertMax: Int, view: UIViewController) {
+        _alertMax = alertMax
+        _view = view
+    }
+    
+    func addErrorAlert(_ title: String) {
+        _alertCount += 1
+        let alertController: UIAlertController
+        if _alertCount < _alertMax {
+            alertController = UIAlertController(title: title, message: "Skipping", preferredStyle: UIAlertControllerStyle.alert)
+            _alerts.append(alertController)
+        } else if _alertCount == _alertMax {
+            alertController = UIAlertController(title: title, message: "Quietly skipping remaining bad entries", preferredStyle: UIAlertControllerStyle.alert)
+            _alerts.append(alertController)
+        }
+    }
+    
+    func addInfoAlert(_ title: String) {
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        _alerts.append(alertController)
+    }
     
     // displayAlertsHandler() is the completion handler
     private func displayAlertsHandler(alert: UIAlertAction!) {
         if self._alerts.count > 0 {
             let nextAlert = self._alerts.remove(at: 0)
-            self.present(nextAlert, animated: false, completion: nil)
+            _view.present(nextAlert, animated: false, completion: nil)
         }
     }
     
     // displayAlerts() kicks of the list of alerts
-    private func displayAlerts() {
+    func displayAlerts() {
         for alert in _alerts {
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: displayAlertsHandler))
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: self.displayAlertsHandler))
         }
         if _alerts.count > 0 {
             let alert = _alerts.remove(at: 0)
-            self.present(alert, animated: false, completion: nil)
+            _view.present(alert, animated: false, completion: nil)
         }
     }
-    
+
 }
