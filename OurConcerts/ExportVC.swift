@@ -21,6 +21,10 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentPickerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         fileNameLbl.delegate = self
+        fileNameLbl.autocapitalizationType = .none
+        fileNameLbl.autocorrectionType = .no
+        fileNameLbl.spellCheckingType = .no
+
         self.fileNameLbl.becomeFirstResponder()
     }
     

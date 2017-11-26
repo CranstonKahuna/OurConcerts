@@ -22,6 +22,9 @@ class AddConcertVC: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         bandShortNameLbl.delegate = self
+        bandShortNameLbl.autocapitalizationType = .none
+        bandShortNameLbl.autocorrectionType = .no
+        bandShortNameLbl.spellCheckingType = .no
         datePicker.setValue(UIColor.white, forKey: "textColor")
     }
 

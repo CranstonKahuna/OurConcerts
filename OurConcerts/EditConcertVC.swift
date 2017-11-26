@@ -19,6 +19,9 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         bandShortNameLbl.delegate = self
+        bandShortNameLbl.autocapitalizationType = .none
+        bandShortNameLbl.autocorrectionType = .no
+        bandShortNameLbl.spellCheckingType = .no
         datePicker.setValue(UIColor.white, forKey: "textColor")
 
         if concert != nil  {
