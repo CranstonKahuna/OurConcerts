@@ -23,6 +23,7 @@
 		348703701F3C6E65002BF779 /* ListConcertsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3487036F1F3C6E65002BF779 /* ListConcertsVC.swift */; };
 		348703731F3C7471002BF779 /* ListConcertsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348703721F3C7471002BF779 /* ListConcertsTableViewCell.swift */; };
 		3487037C1F3EB958002BF779 /* EditConcertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3487037B1F3EB958002BF779 /* EditConcertVC.swift */; };
+		34B353321FCBBFB0007079E2 /* OCButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B353311FCBBFB0007079E2 /* OCButton.swift */; };
 		34FAAEAE1F9E7C0200D098EB /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FAAEAD1F9E7C0200D098EB /* RatingControl.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		3487036F1F3C6E65002BF779 /* ListConcertsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListConcertsVC.swift; sourceTree = "<group>"; };
 		348703721F3C7471002BF779 /* ListConcertsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListConcertsTableViewCell.swift; sourceTree = "<group>"; };
 		3487037B1F3EB958002BF779 /* EditConcertVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditConcertVC.swift; sourceTree = "<group>"; };
+		34B353311FCBBFB0007079E2 /* OCButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCButton.swift; sourceTree = "<group>"; };
 		34FAAEAD1F9E7C0200D098EB /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,6 +166,7 @@
 			children = (
 				348703721F3C7471002BF779 /* ListConcertsTableViewCell.swift */,
 				34FAAEAD1F9E7C0200D098EB /* RatingControl.swift */,
+				34B353311FCBBFB0007079E2 /* OCButton.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3487033F1F3BFBB6002BF779 /* AddConcertVC.swift in Sources */,
+				34B353321FCBBFB0007079E2 /* OCButton.swift in Sources */,
 				34FAAEAE1F9E7C0200D098EB /* RatingControl.swift in Sources */,
 				3483FE641F42734B000759A3 /* CDUtilityFunctions.swift in Sources */,
 				347527511F58D1F000BC3C1E /* ToolsVC.swift in Sources */,
