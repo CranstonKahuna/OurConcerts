@@ -159,7 +159,7 @@
                                 <rect key="frame" x="0.0" y="56" width="375" height="454"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="p5W-zZ-V3g" userLabel="Edit Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="400" height="482.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="457.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Band/Artist Name" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZU-kQ-2UB">
                                                 <rect key="frame" x="12.5" y="0.0" width="375" height="30"/>
@@ -201,9 +201,9 @@
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y29-mK-6P6" customClass="OCButton" customModule="OurConcerts" customModuleProvider="target">
-                                                <rect key="frame" x="175" y="407.5" width="50" height="75"/>
+                                                <rect key="frame" x="175" y="407.5" width="50" height="50"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="y29-mK-6P6" secondAttribute="height" multiplier="1:1.5" id="fUd-Ju-Vtp"/>
+                                                    <constraint firstAttribute="width" secondItem="y29-mK-6P6" secondAttribute="height" multiplier="1:1" id="fUd-Ju-Vtp"/>
                                                     <constraint firstAttribute="width" constant="50" id="faM-Ia-xg0"/>
                                                 </constraints>
                                                 <state key="normal">
@@ -393,19 +393,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our Concerts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0R-AI-LdL">
-                                <rect key="frame" x="88" y="28" width="199" height="60"/>
+                                <rect key="frame" x="88" y="28" width="199" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="8Fe-q8-YFv"/>
+                                    <constraint firstAttribute="height" constant="40" id="8Fe-q8-YFv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="34"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mg7-fV-uAg">
-                                <rect key="frame" x="0.0" y="106" width="375" height="512"/>
+                                <rect key="frame" x="0.0" y="86" width="375" height="532"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="lXH-GH-Pfg" userLabel="Add Concert Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="450"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="425.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Band/Artist Name" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzL-lB-NN8">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="18"/>
@@ -448,9 +448,9 @@
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n3U-vu-bZJ" customClass="OCButton" customModule="OurConcerts" customModuleProvider="target">
-                                                <rect key="frame" x="162.5" y="375.5" width="50" height="74.5"/>
+                                                <rect key="frame" x="162.5" y="375.5" width="50" height="50"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="n3U-vu-bZJ" secondAttribute="height" multiplier="1:1.5" id="Hqp-Vm-s2I"/>
+                                                    <constraint firstAttribute="width" secondItem="n3U-vu-bZJ" secondAttribute="height" multiplier="1:1" id="Hqp-Vm-s2I"/>
                                                     <constraint firstAttribute="width" constant="50" id="uVp-ac-b2Q"/>
                                                 </constraints>
                                                 <state key="normal">
