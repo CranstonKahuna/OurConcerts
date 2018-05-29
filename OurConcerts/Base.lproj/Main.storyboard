@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SWh-bJ-035">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SWh-bJ-035">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="TimesNewRoman.ttf">
-            <string>TimesNewRomanPSMT</string>
-        </array>
-        <array key="TimesNewRomanBold.ttf">
-            <string>TimesNewRomanPS-BoldMT</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--ListConcerts-->
         <scene sceneID="TCd-kR-Fc4">
@@ -405,7 +397,7 @@
                                 <rect key="frame" x="0.0" y="86" width="375" height="532"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="lXH-GH-Pfg" userLabel="Add Concert Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="425.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="468.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Band/Artist Name" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzL-lB-NN8">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="18"/>
@@ -447,8 +439,31 @@
                                                     <constraint firstAttribute="height" constant="25" id="m4Q-vp-RIy"/>
                                                 </constraints>
                                             </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="k9V-dc-hl4">
+                                                <rect key="frame" x="119" y="375.5" width="137" height="25"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ro1-NN-yUx">
+                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="25"/>
+                                                        <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="20"/>
+                                                        <state key="normal" title="◻︎"/>
+                                                        <state key="selected" title="✓"/>
+                                                        <connections>
+                                                            <action selector="couchTourBtnPressed:" destination="P9m-oX-xBp" eventType="touchUpInside" id="5ub-jf-NSm"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Couch Tour?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9t-WF-KoE">
+                                                        <rect key="frame" x="40" y="0.0" width="97" height="25"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="Plm-jy-B0i"/>
+                                                </constraints>
+                                            </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n3U-vu-bZJ" customClass="OCButton" customModule="OurConcerts" customModuleProvider="target">
-                                                <rect key="frame" x="162.5" y="375.5" width="50" height="50"/>
+                                                <rect key="frame" x="162.5" y="418.5" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="n3U-vu-bZJ" secondAttribute="height" multiplier="1:1" id="Hqp-Vm-s2I"/>
                                                     <constraint firstAttribute="width" constant="50" id="uVp-ac-b2Q"/>
@@ -485,6 +500,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="RYA-YL-vXq" firstAttribute="centerX" secondItem="lXH-GH-Pfg" secondAttribute="centerX" id="C55-h0-sUJ"/>
+                                            <constraint firstItem="k9V-dc-hl4" firstAttribute="centerX" secondItem="lXH-GH-Pfg" secondAttribute="centerX" id="ChQ-XH-6cH"/>
                                             <constraint firstItem="765-ia-was" firstAttribute="leading" secondItem="lXH-GH-Pfg" secondAttribute="leading" constant="40" id="TVW-wx-7L8"/>
                                             <constraint firstAttribute="trailing" secondItem="765-ia-was" secondAttribute="trailing" constant="40" id="aJz-YT-uaD"/>
                                         </constraints>
@@ -514,6 +530,7 @@
                     <tabBarItem key="tabBarItem" title="Add" id="jkG-Rt-coB"/>
                     <connections>
                         <outlet property="bandShortNameLbl" destination="GYM-4k-2oO" id="x8F-g8-i6I"/>
+                        <outlet property="couchTourBtn" destination="ro1-NN-yUx" id="Eqp-An-YDB"/>
                         <outlet property="datePicker" destination="765-ia-was" id="paB-9Y-7gJ"/>
                         <outlet property="ratingControl" destination="RYA-YL-vXq" id="zCh-ph-uYw"/>
                     </connections>

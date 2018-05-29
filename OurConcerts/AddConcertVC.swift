@@ -17,6 +17,7 @@ class AddConcertVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var bandShortNameLbl: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var ratingControl: RatingControl!
+    @IBOutlet weak var couchTourBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,13 @@ class AddConcertVC: UIViewController, UITextFieldDelegate {
                 usleep(_addAlertTime)
                 alertController.dismiss(animated: true, completion: nil)
             }
+        }
+    }
+    @IBAction func couchTourBtnPressed(_ sender: UIButton) {
+        if couchTourBtn.isSelected {
+            couchTourBtn.isSelected = false
+        } else {
+            couchTourBtn.isSelected = true
         }
     }
     
