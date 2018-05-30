@@ -23,19 +23,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a05-oG-Hks">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a05-oG-Hks">
                                 <rect key="frame" x="16" y="0.0" width="343" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConcertCell" rowHeight="70" id="QxQ-p8-Gic" customClass="ListConcertsTableViewCell" customModule="OurConcerts" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="70"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConcertCell" rowHeight="80" id="QxQ-p8-Gic" customClass="ListConcertsTableViewCell" customModule="OurConcerts" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QxQ-p8-Gic" id="P04-Oi-Az6">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="69.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Band Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Wg-6m-oQF">
-                                                    <rect key="frame" x="15" y="17" width="313" height="20"/>
+                                                    <rect key="frame" x="15" y="15" width="313" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="Hs7-nW-CCr"/>
                                                     </constraints>
@@ -44,7 +44,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wpR-iz-yNt" userLabel="DateRating Stack">
-                                                    <rect key="frame" x="15" y="43" width="313" height="20"/>
+                                                    <rect key="frame" x="15" y="41" width="313" height="20"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yrg-Fu-g8I">
                                                             <rect key="frame" x="0.0" y="0.0" width="163" height="20"/>
@@ -63,18 +63,31 @@
                                                         <constraint firstAttribute="height" constant="20" id="Y4L-Ri-K8N"/>
                                                     </constraints>
                                                 </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CouchTour" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ElU-gl-Cp3">
+                                                    <rect key="frame" x="15" y="65" width="164" height="12"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="12" id="vsV-6W-546"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="ElU-gl-Cp3" secondAttribute="trailing" constant="164" id="62t-D1-T90"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="wpR-iz-yNt" secondAttribute="trailing" id="AIN-U2-a4e"/>
+                                                <constraint firstItem="ElU-gl-Cp3" firstAttribute="top" secondItem="wpR-iz-yNt" secondAttribute="bottom" constant="4" id="B9G-fJ-lZA"/>
+                                                <constraint firstItem="ElU-gl-Cp3" firstAttribute="leading" secondItem="P04-Oi-Az6" secondAttribute="leadingMargin" id="GwB-vU-KdD"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="3Wg-6m-oQF" secondAttribute="trailing" id="Hip-fA-TPn"/>
                                                 <constraint firstItem="3Wg-6m-oQF" firstAttribute="leading" secondItem="P04-Oi-Az6" secondAttribute="leadingMargin" id="Qda-zn-kNf"/>
                                                 <constraint firstItem="wpR-iz-yNt" firstAttribute="top" secondItem="3Wg-6m-oQF" secondAttribute="bottom" constant="6" id="Ynm-sx-vSx"/>
                                                 <constraint firstItem="wpR-iz-yNt" firstAttribute="leading" secondItem="P04-Oi-Az6" secondAttribute="leadingMargin" id="boq-XC-6tr"/>
-                                                <constraint firstItem="3Wg-6m-oQF" firstAttribute="top" secondItem="P04-Oi-Az6" secondAttribute="topMargin" constant="6" id="pgi-8E-WiK"/>
+                                                <constraint firstItem="3Wg-6m-oQF" firstAttribute="top" secondItem="P04-Oi-Az6" secondAttribute="topMargin" constant="4" id="pgi-8E-WiK"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="bandName" destination="3Wg-6m-oQF" id="NDZ-rq-CKX"/>
+                                            <outlet property="couchTourLbl" destination="ElU-gl-Cp3" id="0Aq-eL-xsd"/>
                                             <outlet property="dateLbl" destination="yrg-Fu-g8I" id="nIB-ZD-7a6"/>
                                             <outlet property="ratingControl" destination="2LE-um-Uhk" id="sS1-i2-HP2"/>
                                         </connections>

@@ -84,11 +84,15 @@ class ToolsVC: UIViewController, UIDocumentPickerDelegate, UINavigationControlle
         for concert in concerts {
             if let c = concert as? [String: String] {
                 var rating: Int16 = 0
+                var couchTour: Bool = false
                 if let bsName: String = c["BSName"], let date = c["Date"] {
                     if let r1 = c["rating"], let r = Int16(r1) {
                          if r >= 0 && r < 6 {
                             rating = r
                         }
+                    }
+                    if let r2 = c["couchTour"], let r = Bool(r2) {
+                        couchTour = r
                     }
                     let cDate = ConcertDate(date)
                     if cDate == nil {
@@ -97,7 +101,7 @@ class ToolsVC: UIViewController, UIDocumentPickerDelegate, UINavigationControlle
                         continue
                     }
                     do {
-                        try addConcert(bsName: bsName, cDate: cDate!, rating: rating)
+                        try addConcert(bsName: bsName, cDate: cDate!, rating: rating, couchTour: couchTour)
                         conCount += 1
                     } catch let error as addConcertErrors {
                         switch error {

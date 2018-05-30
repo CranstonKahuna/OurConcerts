@@ -106,7 +106,11 @@ class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentPickerDelegate 
                 } else {
                     first = false
                 }
-                exportString.append("{ \"Date\": \"\(concert.date!)\", \"BSName\": \"\(shortName)\", \"rating\": \"\(concert.rating)\" }")
+                let dStr = "\"Date\": \"\(concert.date!)\""
+                let bsnStr = "\"BSName\": \"\(shortName)\""
+                let rateStr = "\"rating\": \"\(concert.rating)\""
+                let couchStr = "\"couchTour\": \"\(concert.couchTour)\""
+                exportString.append("{ " + dStr + ", " + bsnStr + ", " + rateStr + ", " + couchStr + " }")
                 numberExported += 1
             }
             exportString.append(jtail)

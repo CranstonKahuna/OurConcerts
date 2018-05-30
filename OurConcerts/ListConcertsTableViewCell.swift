@@ -15,6 +15,7 @@ class ListConcertsTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var bandName: UILabel!
     @IBOutlet weak var ratingControl: RatingControl!
+    @IBOutlet weak var couchTourLbl: UILabel!
     
     func configureCell(concert: Concerts)  {
         //update cell
@@ -32,6 +33,11 @@ class ListConcertsTableViewCell: UITableViewCell {
             ratingControl.rating = concert.rating
         } else {
             ratingControl.rating = 0
+        }
+        if concert.couchTour {
+            couchTourLbl.text = "✔️ Couch Tour"
+        } else {
+            couchTourLbl.text = ""
         }
     }
 }
