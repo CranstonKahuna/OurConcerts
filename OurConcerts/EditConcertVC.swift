@@ -13,6 +13,7 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var bandShortNameLbl: UITextField!
     @IBOutlet weak var ratingControl: RatingControl!
+    @IBOutlet weak var couchTourBtn: UIButton!
     
     var concert: Concerts?
 
@@ -38,6 +39,11 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
             }
             if let rating = concert?.rating {
                 ratingControl.rating = rating
+            }
+            if let couchTour = concert?.couchTour {
+                couchTourBtn.isSelected = couchTour
+            } else {
+                couchTourBtn.isSelected = false
             }
         }
 
@@ -113,8 +119,17 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
         concert!.date = newCDate.concertDateString
         concert!.toBandShortName = bsn
         concert!.rating = ratingControl.rating
+        concert!.couchTour = couchTourBtn.isSelected
         ad.saveContext()
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func couchTourBtnPressed(_ sender: UIButton) {
+        if couchTourBtn.isSelected {
+            couchTourBtn.isSelected = false
+        } else {
+            couchTourBtn.isSelected = true
+        }
     }
     
     @IBAction func deleteBtnPressed(_ sender: Any) {

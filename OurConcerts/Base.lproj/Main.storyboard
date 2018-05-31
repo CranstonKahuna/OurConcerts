@@ -164,7 +164,7 @@
                                 <rect key="frame" x="0.0" y="56" width="375" height="454"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="p5W-zZ-V3g" userLabel="Edit Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="400" height="457.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="500.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Band/Artist Name" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZU-kQ-2UB">
                                                 <rect key="frame" x="12.5" y="0.0" width="375" height="30"/>
@@ -205,8 +205,32 @@
                                                     <constraint firstAttribute="height" constant="25" id="7w1-3q-cxH"/>
                                                 </constraints>
                                             </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OZA-Tr-htV" userLabel="CouchTourStack">
+                                                <rect key="frame" x="131.5" y="407.5" width="137" height="25"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="for-96-BJU">
+                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="25"/>
+                                                        <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="20"/>
+                                                        <state key="normal" title="◻︎"/>
+                                                        <state key="selected" title="✓"/>
+                                                        <connections>
+                                                            <action selector="couchTourBtnPressed:" destination="P9m-oX-xBp" eventType="touchUpInside" id="2CJ-M2-ppW"/>
+                                                            <action selector="couchTourBtnPressed:" destination="pqY-lO-p88" eventType="touchUpInside" id="9mB-0Z-0Di"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Couch Tour?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bDM-YU-TbX">
+                                                        <rect key="frame" x="40" y="0.0" width="97" height="25"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="HuI-ca-6xh"/>
+                                                </constraints>
+                                            </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y29-mK-6P6" customClass="OCButton" customModule="OurConcerts" customModuleProvider="target">
-                                                <rect key="frame" x="175" y="407.5" width="50" height="50"/>
+                                                <rect key="frame" x="175" y="450.5" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="y29-mK-6P6" secondAttribute="height" multiplier="1:1" id="fUd-Ju-Vtp"/>
                                                     <constraint firstAttribute="width" constant="50" id="faM-Ia-xg0"/>
@@ -243,6 +267,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="okR-a6-mBe" firstAttribute="leading" secondItem="p5W-zZ-V3g" secondAttribute="leading" constant="40" id="HG8-Ef-s4C"/>
+                                            <constraint firstItem="OZA-Tr-htV" firstAttribute="centerX" secondItem="p5W-zZ-V3g" secondAttribute="centerX" id="RWk-oY-dWz"/>
                                             <constraint firstAttribute="trailing" secondItem="okR-a6-mBe" secondAttribute="trailing" constant="40" id="TE9-aB-9If"/>
                                         </constraints>
                                     </stackView>
@@ -272,6 +297,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bandShortNameLbl" destination="F6o-OC-arV" id="Iwb-lB-vIt"/>
+                        <outlet property="couchTourBtn" destination="for-96-BJU" id="FN9-3Z-5Io"/>
                         <outlet property="datePicker" destination="okR-a6-mBe" id="lmC-aT-LUX"/>
                         <outlet property="ratingControl" destination="KtL-iv-3aZ" id="S7l-GF-hVH"/>
                     </connections>
@@ -452,7 +478,7 @@
                                                     <constraint firstAttribute="height" constant="25" id="m4Q-vp-RIy"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="k9V-dc-hl4">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="k9V-dc-hl4" userLabel="CouchTourStack">
                                                 <rect key="frame" x="119" y="375.5" width="137" height="25"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ro1-NN-yUx">
