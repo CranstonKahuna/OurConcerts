@@ -19,6 +19,8 @@ class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 //        generateTestData()
+        tableView.layer.borderWidth = 2.0
+        tableView.layer.borderColor = UIColor.lightGray.cgColor
         attemptFetch()
     }
 

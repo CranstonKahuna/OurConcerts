@@ -35,7 +35,7 @@ class ListConcertsTableViewCell: UITableViewCell {
             ratingControl.rating = 0
         }
         if concert.couchTour {
-            couchTourLbl.text = "✔️ Couch Tour"
+            couchTourLbl.text = "✓ Couch Tour"
         } else {
             couchTourLbl.text = ""
         }
