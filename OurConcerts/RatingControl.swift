@@ -79,7 +79,7 @@ import UIKit
            return
         }
         guard let index = ratingButtons.index(of:button) else {
-            fatalError("The button, \(button) is not in the ratinButtons array: \(ratingButtons)")
+            fatalError("The button, \(button) is not in the ratingButtons array: \(ratingButtons)")
         }
         // Calculate the rating of the selected button
         rating = Int16(index)
