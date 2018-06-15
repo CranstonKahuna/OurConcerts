@@ -24,6 +24,7 @@ class EditConcertVC: UIViewController, UITextFieldDelegate {
         bandShortNameLbl.autocorrectionType = .no
         bandShortNameLbl.spellCheckingType = .no
         datePicker.setValue(UIColor.white, forKey: "textColor")
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
 
         if concert != nil  {
             var cDate = ConcertDate(concert!.date!)
