@@ -27,6 +27,7 @@ class AddConcertVC: UIViewController, UITextFieldDelegate {
         bandShortNameLbl.autocorrectionType = .no
         bandShortNameLbl.spellCheckingType = .no
         datePicker.setValue(UIColor.white, forKey: "textColor")
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
     }
 
     override func didReceiveMemoryWarning() {
