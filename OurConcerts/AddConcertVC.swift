@@ -14,6 +14,8 @@ let _addAlertTime:useconds_t = 1000000
 
 class AddConcertVC: UIViewController, UITextFieldDelegate {
 
+    let gradientLayer = CAGradientLayer()
+    
     @IBOutlet weak var bandShortNameLbl: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var ratingControl: RatingControl!
@@ -28,6 +30,7 @@ class AddConcertVC: UIViewController, UITextFieldDelegate {
         bandShortNameLbl.spellCheckingType = .no
         datePicker.setValue(UIColor.white, forKey: "textColor")
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+        createGradientLayer(gradientLayer, vc: self)
     }
 
     override func didReceiveMemoryWarning() {
