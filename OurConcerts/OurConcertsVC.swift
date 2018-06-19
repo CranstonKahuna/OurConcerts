@@ -35,17 +35,22 @@ class ourConcertsVC: UIViewController {
     */
     
     let myColor1Hex = 0x011993 // Midnight
+    let myColor2Hex = 0x941100 // Cayenne
     
     // Creates my gradient
     func createGradientLayer() {
-        let r1 = CGFloat((myColor1Hex >> 16) & 0xFF) / 255.0
-        let g1 = CGFloat((myColor1Hex >> 8) & 0xFF) / 255.0
-        let b1 = CGFloat(myColor1Hex & 0xFF) / 255.0
-        let myColor1 = UIColor(red: r1, green: g1, blue: b1, alpha: 1.0)
+        let myColor1 = getColorFromHex(myColor1Hex)
+        let myColor2 = getColorFromHex(myColor2Hex)
         gradientLayer.frame = self.view.bounds
-        gradientLayer.colors = [myColor1.cgColor, UIColor.red.cgColor]
+        gradientLayer.colors = [myColor1.cgColor, myColor2.cgColor]
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
-
+    
+    func getColorFromHex(_ hexColor: Int) -> UIColor {
+        let r1 = CGFloat((hexColor >> 16) & 0xFF) / 255.0
+        let g1 = CGFloat((hexColor >> 8) & 0xFF) / 255.0
+        let b1 = CGFloat(hexColor & 0xFF) / 255.0
+        return UIColor(red: r1, green: g1, blue: b1, alpha: 1.0)
+    }
 
 }
