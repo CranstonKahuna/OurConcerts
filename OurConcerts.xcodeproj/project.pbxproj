@@ -24,6 +24,7 @@
 		348703731F3C7471002BF779 /* ListConcertsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348703721F3C7471002BF779 /* ListConcertsTableViewCell.swift */; };
 		3487037C1F3EB958002BF779 /* EditConcertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3487037B1F3EB958002BF779 /* EditConcertVC.swift */; };
 		349C7AD720D99178005BE8B2 /* OurConcertsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349C7AD620D99178005BE8B2 /* OurConcertsVC.swift */; };
+		349C7AD920D99E1B005BE8B2 /* ConcertsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349C7AD820D99E1B005BE8B2 /* ConcertsExtension.swift */; };
 		34B353321FCBBFB0007079E2 /* OCButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B353311FCBBFB0007079E2 /* OCButton.swift */; };
 		34FAAEAE1F9E7C0200D098EB /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FAAEAD1F9E7C0200D098EB /* RatingControl.swift */; };
 /* End PBXBuildFile section */
@@ -70,6 +71,7 @@
 		348703721F3C7471002BF779 /* ListConcertsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListConcertsTableViewCell.swift; sourceTree = "<group>"; };
 		3487037B1F3EB958002BF779 /* EditConcertVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditConcertVC.swift; sourceTree = "<group>"; };
 		349C7AD620D99178005BE8B2 /* OurConcertsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurConcertsVC.swift; sourceTree = "<group>"; };
+		349C7AD820D99E1B005BE8B2 /* ConcertsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcertsExtension.swift; sourceTree = "<group>"; };
 		34B353311FCBBFB0007079E2 /* OCButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCButton.swift; sourceTree = "<group>"; };
 		34FAAEAD1F9E7C0200D098EB /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,6 +159,7 @@
 		3487036D1F3C6D6F002BF779 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				349C7AD820D99E1B005BE8B2 /* ConcertsExtension.swift */,
 				3483FE631F42734B000759A3 /* CDUtilityFunctions.swift */,
 				3440EF911FC6488D00AFE41C /* ConcertDate.swift */,
 			);
@@ -333,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				349C7AD720D99178005BE8B2 /* OurConcertsVC.swift in Sources */,
+				349C7AD920D99E1B005BE8B2 /* ConcertsExtension.swift in Sources */,
 				3487033F1F3BFBB6002BF779 /* AddConcertVC.swift in Sources */,
 				34B353321FCBBFB0007079E2 /* OCButton.swift in Sources */,
 				34FAAEAE1F9E7C0200D098EB /* RatingControl.swift in Sources */,
