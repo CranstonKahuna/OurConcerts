@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ListConcertsVC: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
+class ListConcertsVC: ourConcertsVC, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     

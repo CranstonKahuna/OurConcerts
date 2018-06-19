@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditConcertVC: UIViewController, UITextFieldDelegate {
+class EditConcertVC: ourConcertsVC, UITextFieldDelegate {
 
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var bandShortNameLbl: UITextField!

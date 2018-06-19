@@ -9,7 +9,7 @@
 import UIKit
 import MobileCoreServices
 
-class ToolsVC: UIViewController, UIDocumentPickerDelegate, UINavigationControllerDelegate {
+class ToolsVC: ourConcertsVC, UIDocumentPickerDelegate, UINavigationControllerDelegate {
     
     private var tmpDir = NSTemporaryDirectory() as String
 

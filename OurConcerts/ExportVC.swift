@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ExportVC: UIViewController, UITextFieldDelegate, UIDocumentPickerDelegate {
+class ExportVC: ourConcertsVC, UITextFieldDelegate, UIDocumentPickerDelegate {
 
     @IBOutlet weak var fileNameLbl: UITextField!
     
