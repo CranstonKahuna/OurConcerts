@@ -17,6 +17,7 @@ class ExportVC: ourConcertsVC, UITextFieldDelegate, UIDocumentPickerDelegate {
     var tmpDir = NSTemporaryDirectory() as String
     var fname: String = ""
     var tpath: String = ""
+    let iso8601 = ISO8601DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,15 +112,15 @@ class ExportVC: ourConcertsVC, UITextFieldDelegate, UIDocumentPickerDelegate {
                 let rateStr = "\"rating\": \"\(concert.rating)\""
                 let couchStr = "\"couchTour\": \"\(concert.couchTour)\""
                 let createdAtStr: String
-                if let created = concert.created {
-                    createdAtStr = ", \"createdAt\": \"\(created)\""
+                if let created = concert.createdAt {
+                    createdAtStr = ", \"createdAt\": \"" + iso8601.string(from: created) + "\""
                 } else {
                     createdAtStr = ""
                 }
-                exportString.append("{ " + dStr + ", " + bsnStr + ", " + rateStr + ", " + couchStr + ", " + createdAtStr + " }")
+                exportString.append("{ " + dStr + ", " + bsnStr + ", " + rateStr + ", " + couchStr + createdAtStr + " }")
                 numberExported += 1
-                exportString.append(jtail)
             }
+            exportString.append(jtail)
             try exportString.write(toFile: toFile, atomically: true, encoding: .utf8)
         } catch {
             return

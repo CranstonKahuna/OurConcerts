@@ -12,6 +12,8 @@ import MobileCoreServices
 class ToolsVC: ourConcertsVC, UIDocumentPickerDelegate, UINavigationControllerDelegate {
     
     private var tmpDir = NSTemporaryDirectory() as String
+    
+    let iso8601 = ISO8601DateFormatter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,20 +63,19 @@ class ToolsVC: ourConcertsVC, UIDocumentPickerDelegate, UINavigationControllerDe
             infoAlert(title: "file \(fn) is empty", message: nil, view: self)
             return
         }
-        let jsonString = String(data: jsonData, encoding: .utf8)
         do {
             json = try JSONSerialization.jsonObject(with: jsonData, options: [])
         } catch {
-            infoAlert(title: "Cannot parse file \(fn) as json", message: "\(String(describing: jsonString!))", view: self)
+            infoAlert(title: "Cannot parse file \(fn) as json", message: "Please validate JSON format", view: self)
             return
         }
         // NOTE: I could not come up with a test that would parse but fail this check
         guard let dictionary = json as? [String: Any] else {
-            infoAlert(title: "Outermost json of \(fn) not a dictionary", message: "\(String(describing: jsonString!))", view: self)
+            infoAlert(title: "Outermost json of \(fn) not a dictionary", message: "Please validate JSON format", view: self)
             return
         }
         guard let concerts = dictionary["concerts"] as? [Any] else {
-            infoAlert(title: "No \"concerts\" element in json of \(fn)", message: "\(String(describing: jsonString!))", view: self)
+            infoAlert(title: "No \"concerts\" element in json of \(fn)", message: "Please validate JSON format", view: self)
             return
         }
         let alertQ = AlertQueue(alertMax: 4, view: self)
@@ -101,8 +102,12 @@ class ToolsVC: ourConcertsVC, UIDocumentPickerDelegate, UINavigationControllerDe
                         continue
                     }
                     do {
-                        try addConcert(bsName: bsName, cDate: cDate!, rating: rating, couchTour: couchTour)
+                        let retConcert = try addConcert(bsName: bsName, cDate: cDate!, rating: rating, couchTour: couchTour)
                         conCount += 1
+                        if let r3 = c["createdAt"], let r = iso8601.date(from: r3) {
+                            retConcert.createdAt = r;
+                        }
+
                     } catch let error as addConcertErrors {
                         switch error {
                         case .duplicateConcert:

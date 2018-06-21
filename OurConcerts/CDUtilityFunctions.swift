@@ -17,7 +17,7 @@ func addConcertWithAlerts (bsName: String?, cDate: ConcertDate, rating: Int16, c
         return false
     }
     do {
-        try addConcert(bsn: bsn!, cDate: cDate, rating: rating, couchTour: couchTour)
+        let _ = try addConcert(bsn: bsn!, cDate: cDate, rating: rating, couchTour: couchTour)
     } catch let error as addConcertErrors {
         switch (error) {
         case .duplicateConcert:
@@ -25,7 +25,7 @@ func addConcertWithAlerts (bsName: String?, cDate: ConcertDate, rating: Int16, c
             alertC.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
             alertC.addAction(UIAlertAction(title: "Add it anyway", style: UIAlertActionStyle.default) { alertC in
                 do {
-                    try addConcert(bsn: bsn!, cDate: cDate, rating: rating, couchTour: couchTour, force: true)
+                    let _ = try addConcert(bsn: bsn!, cDate: cDate, rating: rating, couchTour: couchTour, force: true)
                 } catch let error as NSError {
                     infoAlert(title: "Error adding concert", message: "Error \(error)", view: view)
                 }
@@ -39,10 +39,11 @@ func addConcertWithAlerts (bsName: String?, cDate: ConcertDate, rating: Int16, c
     return true
 }
 
-func addConcert(bsName: String?, cDate: ConcertDate, rating: Int16, couchTour: Bool) throws {
+func addConcert(bsName: String?, cDate: ConcertDate, rating: Int16, couchTour: Bool) throws -> Concerts {
     let sn = try stringToBSN(bsName)
     let bsn = try fetchBSN(sn!)
-    try addConcert(bsn: bsn, cDate: cDate, rating: rating, couchTour: couchTour)
+    let c = try addConcert(bsn: bsn, cDate: cDate, rating: rating, couchTour: couchTour)
+    return c
 }
 
 enum addConcertErrors: Error {
@@ -50,7 +51,7 @@ enum addConcertErrors: Error {
 }
 
 // Overloaded function: This one takes an already fetched BandShortName
-func addConcert(bsn: BandShortName, cDate: ConcertDate, rating: Int16, couchTour: Bool, force: Bool = false) throws {
+func addConcert(bsn: BandShortName, cDate: ConcertDate, rating: Int16, couchTour: Bool, force: Bool = false) throws -> Concerts {
     if !force {
         let dup = try fetchThisConcert(cDate: cDate, bsn: bsn)
         if dup != nil {
@@ -63,6 +64,7 @@ func addConcert(bsn: BandShortName, cDate: ConcertDate, rating: Int16, couchTour
     concert.rating = rating
     concert.couchTour = couchTour
     ad.saveContext()
+    return concert
 }
 
 // Fetch the Band Short Name core data object for the short name passed

@@ -23,6 +23,10 @@ class ListConcertsVC: ourConcertsVC, UITableViewDataSource, UITableViewDelegate,
         tableView.layer.borderColor = UIColor.lightGray.cgColor
         attemptFetch()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -31,7 +35,6 @@ class ListConcertsVC: ourConcertsVC, UITableViewDataSource, UITableViewDelegate,
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

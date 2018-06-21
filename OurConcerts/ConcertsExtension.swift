@@ -12,8 +12,8 @@ import CoreData
 extension Concerts {
     
     override public func awakeFromInsert() {
-        if self.created == nil {
-            setPrimitiveValue(NSDate(), forKey: "created")
+        if self.createdAt == nil {
+            setPrimitiveValue(NSDate(), forKey: "createdAt")
         }
     }
     
