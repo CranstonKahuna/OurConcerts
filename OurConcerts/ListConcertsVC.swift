@@ -128,8 +128,9 @@ class ListConcertsVC: ourConcertsVC, UITableViewDataSource, UITableViewDelegate,
             break
         case.update:
             if let indexPath = indexPath {
-                let cell = tableView.cellForRow(at: indexPath) as! ListConcertsTableViewCell
-                configureCell(cell:cell, indexPath: indexPath as NSIndexPath)
+                if let cell = tableView.cellForRow(at: indexPath) as? ListConcertsTableViewCell {
+                    configureCell(cell:cell, indexPath: indexPath as NSIndexPath)
+                }
             }
             break
         case.move:
